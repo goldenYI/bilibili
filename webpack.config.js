@@ -1,5 +1,6 @@
 "use strict"
 var webpack = require("webpack");
+var path= require("path")
 const glob = require('glob');
 
 var config = {
@@ -11,7 +12,12 @@ var config = {
     },
     output: {
         path: __dirname + '/dist/js/',
-        filename: '[name].js'
+        filename: 'index.js'
+    },
+    resolve: {
+        root: [
+            path.resolve('./src')
+        ]
     },
     module: {
         preLoaders: [{
@@ -19,14 +25,20 @@ var config = {
             loader: "eslint-loader",
             exclude: /node_modules/
         }],
-        loaders: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-                presets: ['es2015', 'stage-0', 'react']
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel',
+                query: {
+                    presets: ['es2015', 'stage-0', 'react']
+                }
+            },
+            {
+               test: /\.less$/,
+               loader: "style!css!less"
             }
-        }]
+        ]
     },
     eslint: {
         configFile: './.eslintrc'
@@ -39,7 +51,7 @@ var config = {
 /**
  * find entries
  */
-var files = glob.sync('./src/js/*/index.js');
+var files = glob.sync('./src/js/index.js');
 var newEntries = files.reduce(function(memo, file) {
     var name = /.*\/(.*?)\/index\.js/.exec(file)[1];
     memo[name] = entry(name);
@@ -54,7 +66,7 @@ config.entry = Object.assign({}, config.entry, newEntries);
  * @return {[type]}      [description]
  */
 function entry(name) {
-    return './src/js/' + name + '/index.js';
+    return './src/' + name + '/index.js';
 }
 
 module.exports = config;

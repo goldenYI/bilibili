@@ -28,7 +28,7 @@ var mocks = require('./mocks');
 var src = {
     html: "src/html/*.html", // html 文件
     vendor: ["vendor/**/*", "bower_components/**/*", "node_modules/**/*"], // vendor 目录和 bower_components
-    style: "src/style/*/index.less", // style 目录下所有 xx/index.less
+    style: ["src/style/**/*/index.less", "src/style/*/index.less"], // style 目录下所有 xx/index.less
     assets: "assets/**/*" // 图片等应用资源
 };
 
@@ -107,23 +107,24 @@ function html() {
         .pipe(gulp.dest(dist.html))
 }
 
-/**
- * [style description]
- * @param  {Function} done [description]
- * @return {[type]}        [description]
- */
-function style() {
-    return gulp.src(src.style)
-        .pipe(cached('style'))
-        .pipe(less())
-        .on('error', handleError)
-        .pipe(autoprefixer({
-            browsers: ['last 3 version']
-        }))
-        .pipe(gulp.dest(dist.style))
-}
-
-exports.style = style;
+// webpack来负责
+// /**
+//  * [style description]
+//  * @param  {Function} done [description]
+//  * @return {[type]}        [description]
+//  */
+// function style() {
+//     return gulp.src(src.style)
+//         .pipe(cached('style'))
+//         .pipe(less())
+//         .on('error', handleError)
+//         .pipe(autoprefixer({
+//             browsers: ['last 3 version']
+//         }))
+//         .pipe(gulp.dest(dist.style))
+// }
+//
+// exports.style = style;
 
 /**
  * [webpackProduction description]
@@ -221,7 +222,7 @@ function connectServer(done) {
 function watch() {
     gulp.watch(src.html, html);
     gulp.watch("src/**/*.js", webpackDevelopment);
-    gulp.watch("src/**/*.less", style);
+    //gulp.watch("src/**/*.less", style);
     gulp.watch("dist/**/*").on('change', function(file) {
         gulp.src('dist/')
             .pipe(connect.reload());
@@ -233,7 +234,7 @@ function watch() {
  */
 gulp.task("default", gulp.series(
     clean,
-    gulp.parallel(copyAssets, copyVendor, html, style, webpackDevelopment),
+    gulp.parallel(copyAssets, copyVendor, html, webpackDevelopment),
     connectServer,
     watch
 ));
@@ -243,7 +244,7 @@ gulp.task("default", gulp.series(
  */
 gulp.task("build", gulp.series(
     clean,
-    gulp.parallel(copyAssets, copyVendor, html, style, webpackProduction),
+    gulp.parallel(copyAssets, copyVendor, html, webpackProduction),
     cleanBin,
     copyDist,
     function(done) {
