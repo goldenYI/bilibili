@@ -55,7 +55,16 @@ webpackJsonp([0],{
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(_head2.default, null);
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_head2.default, null),
+	                _react2.default.createElement(
+	                    'h1',
+	                    null,
+	                    'hello world'
+	                )
+	            );
 	        }
 	    }]);
 	
@@ -81,7 +90,9 @@ webpackJsonp([0],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	__webpack_require__(179);
+	var _index = __webpack_require__(179);
+	
+	var _index2 = _interopRequireDefault(_index);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -102,6 +113,7 @@ webpackJsonp([0],{
 	        var _this = _possibleConstructorReturn(this, (CommonHead.__proto__ || Object.getPrototypeOf(CommonHead)).call(this, props));
 	
 	        _this.state = {};
+	        console.log(_index2.default.haha);
 	        return _this;
 	    }
 	    // 生命周期方法
@@ -121,7 +133,7 @@ webpackJsonp([0],{
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'h1',
-	                null,
+	                { className: _index2.default.haha },
 	                'hello world'
 	            );
 	        }
@@ -149,8 +161,8 @@ webpackJsonp([0],{
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/.0.26.1@css-loader/index.js!./../../../../node_modules/.2.2.3@less-loader/index.js!./index.less", function() {
-				var newContent = require("!!./../../../../node_modules/.0.26.1@css-loader/index.js!./../../../../node_modules/.2.2.3@less-loader/index.js!./index.less");
+			module.hot.accept("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css", function() {
+				var newContent = require("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -169,10 +181,12 @@ webpackJsonp([0],{
 	
 	
 	// module
-	exports.push([module.id, "h1 {\n  color: #6c94be;\n}\n", ""]);
+	exports.push([module.id, "._1GkJfLu53KXpxDJxxQdn0h {\n  color: #6c94be;\n}\n", ""]);
 	
 	// exports
-
+	exports.locals = {
+		"haha": "_1GkJfLu53KXpxDJxxQdn0h"
+	};
 
 /***/ },
 

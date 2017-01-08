@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CommonHead from 'js/common/head/head.js';
@@ -15,7 +17,11 @@ class Index extends React.Component {
 
     render() {
         return(
-            <CommonHead />
+            <div>
+                <CommonHead />
+                <h1>hello world</h1>
+            </div>
+
         );
     }
 }

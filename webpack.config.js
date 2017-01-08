@@ -16,28 +16,27 @@ var config = {
     },
     resolve: {
         root: [
-            path.resolve('./src')
+            path.resolve('./src'),
+            path.resolve('./dist')
         ]
     },
     module: {
         preLoaders: [{
             test: /\.js$/,
             loader: "eslint-loader",
-            exclude: /node_modules/
+            exclude: [/node_modules/, /dist/]
         }],
-        loaders: [
-            {
+        loaders: [{
                 test: /\.js$/,
-                exclude: /node_modules/,
+                exclude: [/node_modules/, /dist/],
                 loader: 'babel',
                 query: {
                     presets: ['es2015', 'stage-0', 'react']
                 }
-            },
-            {
-               test: /\.less$/,
-               loader: "style!css!less"
-            }
+            },{
+               test: /\.css$/,
+               loader: "style-loader!css-loader?modules&root=./dist",
+           },
         ]
     },
     eslint: {
