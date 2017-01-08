@@ -113,10 +113,11 @@ function html() {
  * @return {[type]}        [description]
  */
 function style() {
-    // return true;
     return gulp.src(src.style)
         .pipe(cached('style'))
-        .pipe(less())
+        .pipe(less({
+            paths: "src/style/"
+        }))
         .on('error', handleError)
         .pipe(autoprefixer({
             browsers: ['last 3 version']

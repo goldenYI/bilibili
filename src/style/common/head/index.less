@@ -1,6 +1,12 @@
-@nice-blue: #5B83AD;
-@light-blue: @nice-blue + #111;
+@import "common/flexbox";
 
-.haha {
-    color: @light-blue;
+.container {
+    position: fixed;
+    height: 20%;
+    > div {
+        text-align: center;
+    }
+    .left { background:green; }
+    .middle { background:silver; }
+    .right { background:red; }
 }

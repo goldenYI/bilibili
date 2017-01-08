@@ -1,3 +1,83 @@
-.haha {
-  color: #6c94be;
+/* actual flexbox stuff */
+.container {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-box-pack: start;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+}
+.no-flexboxlegacy .container {
+  *zoom: 1;
+}
+.no-flexboxlegacy .container:before,
+.no-flexboxlegacy .container:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.no-flexboxlegacy .container:after {
+  clear: both;
+}
+.no-flexboxlegacy .container > * {
+  float: left;
+}
+.container .left {
+  -ms-flex: 1;
+  flex: 1;
+  -ms-flex-order: 1;
+  order: 1;
+}
+.no-flexbox .container .left {
+  width: 14.28571429%;
+}
+.container .middle {
+  -ms-flex: 5;
+  flex: 5;
+  -ms-flex-order: 2;
+  order: 2;
+}
+.no-flexbox .container .middle {
+  width: 71.42857143%;
+}
+.container .right {
+  -ms-flex: 1;
+  flex: 1;
+  -ms-flex-order: 3;
+  order: 3;
+}
+.no-flexbox .container .right {
+  width: 14.28571429%;
+}
+/* MIXINS */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.container {
+  position: fixed;
+  height: 20%;
+}
+.container > div {
+  text-align: center;
+}
+.container .left {
+  background: green;
+}
+.container .middle {
+  background: silver;
+}
+.container .right {
+  background: red;
 }

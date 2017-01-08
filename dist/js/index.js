@@ -113,7 +113,7 @@ webpackJsonp([0],{
 	        var _this = _possibleConstructorReturn(this, (CommonHead.__proto__ || Object.getPrototypeOf(CommonHead)).call(this, props));
 	
 	        _this.state = {};
-	        console.log(_index2.default.haha);
+	
 	        return _this;
 	    }
 	    // 生命周期方法
@@ -132,9 +132,23 @@ webpackJsonp([0],{
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'h1',
-	                { className: _index2.default.haha },
-	                'hello world'
+	                'div',
+	                { className: _index2.default.container },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _index2.default.left },
+	                    'logo'
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _index2.default.middle },
+	                    'search'
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _index2.default.right },
+	                    'user'
+	                )
 	            );
 	        }
 	    }]);
@@ -181,11 +195,17 @@ webpackJsonp([0],{
 	
 	
 	// module
-	exports.push([module.id, "._1GkJfLu53KXpxDJxxQdn0h {\n  color: #6c94be;\n}\n", ""]);
+	exports.push([module.id, "/* actual flexbox stuff */\n.v1pq-IMey5HCriNVmMSqZ {\n  width: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n._v6Z3wKqjcrHtmRad0nKm .v1pq-IMey5HCriNVmMSqZ {\n  *zoom: 1;\n}\n._v6Z3wKqjcrHtmRad0nKm .v1pq-IMey5HCriNVmMSqZ:before,\n._v6Z3wKqjcrHtmRad0nKm .v1pq-IMey5HCriNVmMSqZ:after {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._v6Z3wKqjcrHtmRad0nKm .v1pq-IMey5HCriNVmMSqZ:after {\n  clear: both;\n}\n._v6Z3wKqjcrHtmRad0nKm .v1pq-IMey5HCriNVmMSqZ > * {\n  float: left;\n}\n.v1pq-IMey5HCriNVmMSqZ ._3-GJR0C5ytwmENojvc0qf0 {\n  -ms-flex: 1;\n  flex: 1;\n  -ms-flex-order: 1;\n  order: 1;\n}\n._2jSriFt3HfunxPvaSXiFND .v1pq-IMey5HCriNVmMSqZ ._3-GJR0C5ytwmENojvc0qf0 {\n  width: 14.28571429%;\n}\n.v1pq-IMey5HCriNVmMSqZ .ab0Gy2eemcvQnw-sTFcZu {\n  -ms-flex: 5;\n  flex: 5;\n  -ms-flex-order: 2;\n  order: 2;\n}\n._2jSriFt3HfunxPvaSXiFND .v1pq-IMey5HCriNVmMSqZ .ab0Gy2eemcvQnw-sTFcZu {\n  width: 71.42857143%;\n}\n.v1pq-IMey5HCriNVmMSqZ ._2fc2HSYgIzYmxeF4XPVom2 {\n  -ms-flex: 1;\n  flex: 1;\n  -ms-flex-order: 3;\n  order: 3;\n}\n._2jSriFt3HfunxPvaSXiFND .v1pq-IMey5HCriNVmMSqZ ._2fc2HSYgIzYmxeF4XPVom2 {\n  width: 14.28571429%;\n}\n/* MIXINS */\n._1MMZM_l51aWv302o9Z8bBy {\n  *zoom: 1;\n}\n._1MMZM_l51aWv302o9Z8bBy:before,\n._1MMZM_l51aWv302o9Z8bBy:after {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._1MMZM_l51aWv302o9Z8bBy:after {\n  clear: both;\n}\n.v1pq-IMey5HCriNVmMSqZ {\n  position: fixed;\n  height: 20%;\n}\n.v1pq-IMey5HCriNVmMSqZ > div {\n  text-align: center;\n}\n.v1pq-IMey5HCriNVmMSqZ ._3-GJR0C5ytwmENojvc0qf0 {\n  background: green;\n}\n.v1pq-IMey5HCriNVmMSqZ .ab0Gy2eemcvQnw-sTFcZu {\n  background: silver;\n}\n.v1pq-IMey5HCriNVmMSqZ ._2fc2HSYgIzYmxeF4XPVom2 {\n  background: red;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"haha": "_1GkJfLu53KXpxDJxxQdn0h"
+		"container": "v1pq-IMey5HCriNVmMSqZ",
+		"no-flexboxlegacy": "_v6Z3wKqjcrHtmRad0nKm",
+		"left": "_3-GJR0C5ytwmENojvc0qf0",
+		"no-flexbox": "_2jSriFt3HfunxPvaSXiFND",
+		"middle": "ab0Gy2eemcvQnw-sTFcZu",
+		"right": "_2fc2HSYgIzYmxeF4XPVom2",
+		"clearfix": "_1MMZM_l51aWv302o9Z8bBy"
 	};
 
 /***/ },
