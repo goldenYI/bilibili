@@ -36,7 +36,10 @@ var config = {
             },{
                test: /\.css$/,
                loader: "style-loader!css-loader?modules&root=./dist",
-           },
+           },{
+　　　　　　      test: /\.((woff2?|svg)(\?v=[0-9]\.[0-9]\.[0-9]))|(woff2?|svg|jpe?g|png|gif|ico)$/,
+　　　　　　      loader: 'url-loader?limit=8192&name=../assets/images/[hash:8].[name].[ext]'
+　　　　    }
         ]
     },
     eslint: {

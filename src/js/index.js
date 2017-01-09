@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CommonHead from 'js/common/head/head.js';
+import 'style/common/index.css'
 
 class Index extends React.Component {
     constructor(props) {
@@ -19,7 +20,6 @@ class Index extends React.Component {
         return(
             <div>
                 <CommonHead />
-                <h1>hello world</h1>
             </div>
 
         );

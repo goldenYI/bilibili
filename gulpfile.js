@@ -29,7 +29,7 @@ var src = {
     html: "src/html/*.html", // html 文件
     vendor: ["vendor/**/*", "bower_components/**/*", "node_modules/**/*"], // vendor 目录和 bower_components
     style: ["src/style/**/*/index.less", "src/style/*/index.less"], // style 目录下所有 xx/index.less
-    assets: "assets/**/*" // 图片等应用资源
+    assets: "src/assets/**/*" // 图片等应用资源
 };
 
 var dist = {
@@ -116,7 +116,7 @@ function style() {
     return gulp.src(src.style)
         .pipe(cached('style'))
         .pipe(less({
-            paths: "src/style/"
+            paths: "src/"
         }))
         .on('error', handleError)
         .pipe(autoprefixer({
