@@ -17,6 +17,7 @@ var config = {
     resolve: {
         root: [
             path.resolve('./src'),
+            path.resolve('./src/js'),
             path.resolve('./dist')
         ]
     },
