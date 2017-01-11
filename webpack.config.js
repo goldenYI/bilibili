@@ -36,6 +36,7 @@ var config = {
                 }
             },{
                test: /\.css$/,
+               exclude: /node_modules/,
                loader: "style-loader!css-loader?modules&root=./dist",
            },{
 　　　　　　      test: /\.((woff2?|svg)(\?v=[0-9]\.[0-9]\.[0-9]))|(woff2?|svg|jpe?g|png|gif|ico)$/,

@@ -1,14 +1,17 @@
 'use strict';
 
 import React from 'react';
-import styles from 'style/common/head/index.css'
+import styles from 'style/common/head/index.css';
+import assets from 'assets.js'
+
 
 class CommonHead extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         // 定义 state
         this.state = {};
     }
+
     // 生命周期方法
     componentWillMount() {}
     componentDidMount() {}
@@ -38,14 +41,14 @@ class CommonHead extends React.Component {
                                 name="search" />
 					        <img
                                 className={styles.searchImg}
-                                src={require('assets/common/search.svg')}
+                                src={assets.searchSvg}
                                 onClick={this.onClickSubmit()} />
 				        </div>
 			        </form>
                     <div className={styles.fillField}></div>
                 </div>
                 <div className={styles.right}>
-                    <img className={styles.userImg} src={require('assets/common/user.jpg')} />
+                    <img className={styles.userImg} src={assets.logo} />
                 </div>
             </div>
         );

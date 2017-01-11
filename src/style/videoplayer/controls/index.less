@@ -1,0 +1,33 @@
+@import "style/common/flexbox";
+
+.container {
+    width: 100%;
+    height: 34px;
+    display: block;
+    position: absolute;;
+    bottom: 0px;
+    .flexbox();
+    align-items: center;
+    justify-content: center;
+    .controlsField {
+        .flex(8,10);
+        .order(2);
+        height: 100%;
+        background-color: #3f464d;
+        opacity: 0;
+        transition: opacity 0.2s ease-in;
+        box-sizing: border-box;
+        * {
+            height: 100%;
+            color: white;
+        }
+    }
+    .divleft {
+        .flex(1,5);
+        .order(1);
+    }
+    .divright {
+        .flex(1,5);
+        .order(3);
+    }
+}

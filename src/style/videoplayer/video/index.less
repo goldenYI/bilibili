@@ -1,0 +1,25 @@
+@import "style/common/flexbox";
+@import "./../controls/index.less";
+
+.videoField {
+    height: 96%;
+    position: relative;
+
+    display: block;
+    &:focus {
+        outline:none!important;
+    }
+    > video {
+        display: block;
+        height: 100%;
+        position: relative;
+        float: left;
+
+    }
+    .container {
+        .container();
+    }
+    &:hover .controlsField{
+        opacity: 0.9;
+    }
+}

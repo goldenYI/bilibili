@@ -2,6 +2,11 @@
 
 import React from 'react';
 import CommonHead from 'components/common/head/Head.js';
+import VideoPlayer from 'components/videoplayer/VideoPlayer.js';
+
+import 'style/common/index.css'
+import styles from 'style/containers/app.css'
+
 
 class App extends React.Component {
     constructor(props) {
@@ -16,8 +21,11 @@ class App extends React.Component {
 
     render() {
         return(
-            <div>
-                <CommonHead />
+            <div className={styles.container} >
+                <div className={styles.apphead} ><CommonHead /></div>
+                <div className={styles.appbody} ><VideoPlayer /></div>
+
+
             </div>
         );
     }

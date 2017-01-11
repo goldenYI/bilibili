@@ -28,7 +28,7 @@ var mocks = require('./mocks');
 var src = {
     html: "src/html/*.html", // html 文件
     vendor: ["vendor/**/*", "bower_components/**/*", "node_modules/**/*"], // vendor 目录和 bower_components
-    style: ["src/style/**/*/index.less", "src/style/*/index.less"], // style 目录下所有 xx/index.less
+    style: ["src/style/***/**/*", "src/style/**/*"], // style 目录下所有 xx/index.less
     assets: "src/assets/**/*" // 图片等应用资源
 };
 
@@ -235,7 +235,8 @@ function watch() {
  */
 gulp.task("default", gulp.series(
     clean,
-    gulp.parallel(copyAssets, copyVendor, html, style, webpackDevelopment),
+    gulp.parallel(copyAssets, copyVendor, html, style),
+    webpackDevelopment,
     connectServer,
     watch
 ));
@@ -245,7 +246,8 @@ gulp.task("default", gulp.series(
  */
 gulp.task("build", gulp.series(
     clean,
-    gulp.parallel(copyAssets, copyVendor, html, style, webpackProduction),
+    gulp.parallel(copyAssets, copyVendor, html, style),
+    webpackProduction,
     cleanBin,
     copyDist,
     function(done) {
