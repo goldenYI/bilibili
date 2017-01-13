@@ -223,7 +223,7 @@ function connectServer(done) {
 function watch() {
     gulp.watch(src.html, html);
     gulp.watch("src/**/*.js", webpackDevelopment);
-    gulp.watch("src/**/*.less", gulp.series(style, webpackDevelopment));
+    gulp.watch(["src/**/*.less", "src/***/**/*.less"], gulp.series(style, webpackDevelopment));
     gulp.watch("dist/**/*").on('change', function(file) {
         gulp.src('dist/')
             .pipe(connect.reload());

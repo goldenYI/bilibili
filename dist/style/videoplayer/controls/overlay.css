@@ -1,0 +1,86 @@
+/*
+    MIXINS
+*/
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after,
+.clearfix:before {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-box-pack: start;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+.no-flexboxlegacy .container {
+  *zoom: 1;
+}
+.no-flexboxlegacy .container:after,
+.no-flexboxlegacy .container:before {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.no-flexboxlegacy .container:after {
+  clear: both;
+}
+.no-flexboxlegacy .container > * {
+  float: left;
+}
+.container .overlayPauseField {
+  width: 100px;
+  height: 90px;
+  background-color: #30343d;
+  opacity: 0.95;
+  border-radius: 15%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-box-pack: start;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+.no-flexboxlegacy .container .overlayPauseField {
+  *zoom: 1;
+}
+.no-flexboxlegacy .container .overlayPauseField:after,
+.no-flexboxlegacy .container .overlayPauseField:before {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.no-flexboxlegacy .container .overlayPauseField:after {
+  clear: both;
+}
+.no-flexboxlegacy .container .overlayPauseField > * {
+  float: left;
+}
+.container .overlayPauseField > img {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}

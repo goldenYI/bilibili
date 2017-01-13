@@ -1,0 +1,53 @@
+.container {
+  width: 100px;
+  margin-left: 30px;
+  float: left;
+}
+.container .progressbar {
+  -webkit-appearance: none;
+  width: 100%;
+  /* Firefox下所需 */
+}
+.container .progressbar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  position: relative;
+  /* 設為相對位置，為了前後區塊的絕對位置而設定 */
+  width: 10px;
+  height: 10px;
+  background: #f22;
+  border-radius: 50%;
+  transition: 0.2s;
+  /* 點選放大時候的漸變時間 */
+}
+.container .progressbar::-webkit-slider-thumb:after,
+.container .progressbar::-webkit-slider-thumb:before {
+  position: absolute;
+  top: 3px;
+  width: 2000px;
+  background: #f22;
+  /* 長度很長沒關係，因為剛剛有用 overflow:hidden 了 */
+  height: 4px;
+  content: "";
+  pointer-events: none;
+  /* 讓滑鼠可以點擊穿透偽元素，不然會點不到下面 */
+  transition: 0.2s;
+}
+.container .progressbar::-webkit-slider-thumb:before {
+  left: -1997px;
+  background: #f22;
+}
+.container .progressbar::-webkit-slider-thumb:after {
+  left: 10px;
+  background: #edc;
+}
+.container .progressbar:active::-webkit-slider-thumb:after,
+.container .progressbar:active::-webkit-slider-thumb:before {
+  top: 6px;
+}
+.container .progressbar:active::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+}
+.container .progressbar:active::-webkit-slider-thumb:after {
+  left: 16px;
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import Controls from './../controls/Controls';
 import throttle from 'lodash';
-import Overlay from './overlay/Overlay';
+import Overlay from './../controls/overlay/Overlay';
 import styles from 'style/videoplayer/video/index.css';
-
+import InputRange from 'components/react-input-range/InputRange.js';
 class Video extends React.Component {
     constructor(props) {
         super(props);
@@ -95,6 +95,7 @@ class Video extends React.Component {
      * @return {undefined}
      */
     togglePlay() {
+        console.log(this.videoEl.currentTime);
         if (this.state.paused) {
             this.play();
             this.setState({
@@ -245,6 +246,7 @@ class Video extends React.Component {
             error: this.videoEl.networkState === this.videoEl.NETWORK_NO_SOURCE,
             loading: this.videoEl.readyState < this.videoEl.HAVE_ENOUGH_DATA
         });
+
     }
 
     /**
@@ -361,15 +363,18 @@ class Video extends React.Component {
                 className={styles.videoField}
                 tabIndex="0"
                 onFocus={this.onFocus.bind(this)}
-                onBlur={this.onBlur.bind(this)}>
+                onBlur={this.onBlur.bind(this)} >
                 <video
                     src={this.props.src}
                     ref={(el) => {
                         this.videoEl = el;
-                    }}>     </video>
+                    }}
+                    onClick={this.togglePlay.bind(this)}></video>
+                {this.state.paused ? <Overlay togglePlay={this.togglePlay.bind(this)} /> : <div></div> }
                 <Controls
                     paused={this.state.paused}
                     togglePlay={this.togglePlay.bind(this)}/>
+                <InputRange />
             </div>
         );
     }

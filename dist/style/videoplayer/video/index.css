@@ -17,8 +17,25 @@
   width: 100%;
   height: 34px;
   display: block;
+  float: left;
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
+}
+.container .controlsField {
+  width: 100%;
+  height: 100%;
+  background-color: #3f464d;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+  box-sizing: border-box;
+}
+.container .controlsField * {
+  height: 100%;
+  color: white;
+}
+.videoField {
+  height: 96%;
+  position: relative;
   display: -ms-flexbox;
   display: flex;
   -ms-box-orient: horizontal;
@@ -31,62 +48,22 @@
       align-items: center;
   -ms-flex-pack: center;
       justify-content: center;
+  display: block;
 }
-.no-flexboxlegacy .container {
+.no-flexboxlegacy .videoField {
   *zoom: 1;
 }
-.no-flexboxlegacy .container:after,
-.no-flexboxlegacy .container:before {
+.no-flexboxlegacy .videoField:after,
+.no-flexboxlegacy .videoField:before {
   display: table;
   content: "";
   line-height: 0;
 }
-.no-flexboxlegacy .container:after {
+.no-flexboxlegacy .videoField:after {
   clear: both;
 }
-.no-flexboxlegacy .container > * {
+.no-flexboxlegacy .videoField > * {
   float: left;
-}
-.container .controlsField {
-  -ms-flex: 8;
-  flex: 8;
-  -ms-flex-order: 2;
-  order: 2;
-  height: 100%;
-  background-color: #3f464d;
-  opacity: 0;
-  transition: opacity 0.2s ease-in;
-  box-sizing: border-box;
-}
-.no-flexbox .container .controlsField {
-  width: 80%;
-}
-.container .controlsField * {
-  height: 100%;
-  color: white;
-}
-.container .divleft {
-  -ms-flex: 1;
-  flex: 1;
-  -ms-flex-order: 1;
-  order: 1;
-}
-.no-flexbox .container .divleft {
-  width: 20%;
-}
-.container .divright {
-  -ms-flex: 1;
-  flex: 1;
-  -ms-flex-order: 3;
-  order: 3;
-}
-.no-flexbox .container .divright {
-  width: 20%;
-}
-.videoField {
-  height: 96%;
-  position: relative;
-  display: block;
 }
 .videoField:focus {
   outline: none!important;
@@ -101,71 +78,21 @@
   width: 100%;
   height: 34px;
   display: block;
-  position: absolute;
-  bottom: 0px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-box-orient: horizontal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-box-pack: start;
-  -ms-flex-pack: start;
-      justify-content: flex-start;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-}
-.no-flexboxlegacy .videoField .container {
-  *zoom: 1;
-}
-.no-flexboxlegacy .videoField .container:after,
-.no-flexboxlegacy .videoField .container:before {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.no-flexboxlegacy .videoField .container:after {
-  clear: both;
-}
-.no-flexboxlegacy .videoField .container > * {
   float: left;
+  position: absolute;
+  bottom: 0;
 }
 .videoField .container .controlsField {
-  -ms-flex: 8;
-  flex: 8;
-  -ms-flex-order: 2;
-  order: 2;
+  width: 100%;
   height: 100%;
   background-color: #3f464d;
   opacity: 0;
   transition: opacity 0.2s ease-in;
   box-sizing: border-box;
 }
-.no-flexbox .videoField .container .controlsField {
-  width: 80%;
-}
 .videoField .container .controlsField * {
   height: 100%;
   color: white;
-}
-.videoField .container .divleft {
-  -ms-flex: 1;
-  flex: 1;
-  -ms-flex-order: 1;
-  order: 1;
-}
-.no-flexbox .videoField .container .divleft {
-  width: 20%;
-}
-.videoField .container .divright {
-  -ms-flex: 1;
-  flex: 1;
-  -ms-flex-order: 3;
-  order: 3;
-}
-.no-flexbox .videoField .container .divright {
-  width: 20%;
 }
 .videoField:hover .controlsField {
   opacity: 0.9;
