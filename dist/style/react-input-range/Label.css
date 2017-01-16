@@ -1,0 +1,7 @@
+.container {
+  position: absolute;
+  color: #aaaaaa;
+  font-family: "Helvetica Neue", san-serif;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}

@@ -2448,9 +2448,9 @@ webpackJsonp([0],[
 	
 	var _VideoPlayer2 = _interopRequireDefault(_VideoPlayer);
 	
-	__webpack_require__(247);
+	__webpack_require__(260);
 	
-	var _app = __webpack_require__(249);
+	var _app = __webpack_require__(262);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
@@ -3174,15 +3174,15 @@ webpackJsonp([0],[
 	
 	var _Controls2 = _interopRequireDefault(_Controls);
 	
-	var _lodash = __webpack_require__(243);
+	var _lodash = __webpack_require__(247);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _Overlay = __webpack_require__(244);
+	var _Overlay = __webpack_require__(257);
 	
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 	
-	var _index = __webpack_require__(241);
+	var _index = __webpack_require__(255);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -3220,7 +3220,8 @@ webpackJsonp([0],[
 	            playbackRate: 1,
 	            error: false,
 	            loading: false,
-	            focused: false
+	            focused: false,
+	            inputRangeValue: 0
 	        };
 	        _this.EVENTS = ['onAbort', 'onCanPlay', 'onCanPlayThrough', 'onDurationChange', 'onEmptied', 'onEncrypted', 'onEnded', 'onError', 'onLoadedData', 'onLoadedMetadata', 'onLoadStart', 'onPause', 'onPlay', 'onPlaying', 'onProgress', 'onRateChange', 'onSeeked', 'onSeeking', 'onStalled', 'onSuspend', 'onTimeUpdate', 'onVolumeChange', 'onWaiting'];
 	        return _this;
@@ -3587,6 +3588,13 @@ webpackJsonp([0],[
 	            this.setState({ focused: false });
 	        }
 	    }, {
+	        key: 'handleInputRangeChange',
+	        value: function handleInputRangeChange(changeValue) {
+	            this.setState({
+	                inputRangeValue: changeValue
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this3 = this;
@@ -3618,7 +3626,17 @@ webpackJsonp([0],[
 	                _react2.default.createElement(_Controls2.default, {
 	                    paused: this.state.paused,
 	                    togglePlay: this.togglePlay.bind(this) }),
-	                _react2.default.createElement(_InputRange2.default, null)
+	                _react2.default.createElement(_InputRange2.default, {
+	                    defaultValue: 0,
+	                    disabled: false,
+	                    buttonColor: '#5caf9e',
+	                    buttonwidth: '8px',
+	                    buttonStyles: {
+	                        borderRadius: '10%'
+	                    },
+	                    labelDisable: true,
+	                    value: this.state.inputRangeValue,
+	                    onChange: this.handleInputRangeChange.bind(this) })
 	            );
 	        }
 	    }]);
@@ -3666,7 +3684,7 @@ webpackJsonp([0],[
 	
 	var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 	
-	var _index = __webpack_require__(241);
+	var _index = __webpack_require__(255);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -3857,7 +3875,7 @@ webpackJsonp([0],[
 	
 	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
-	var _index = __webpack_require__(239);
+	var _index = __webpack_require__(253);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -3950,13 +3968,31 @@ webpackJsonp([0],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _classnames = __webpack_require__(238);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Slider = __webpack_require__(238);
+	var _Slider = __webpack_require__(239);
 	
 	var _Slider2 = _interopRequireDefault(_Slider);
+	
+	var _valueTransformer = __webpack_require__(246);
+	
+	var _valueTransformer2 = _interopRequireDefault(_valueTransformer);
+	
+	var _Track = __webpack_require__(248);
+	
+	var _Track2 = _interopRequireDefault(_Track);
+	
+	var _util = __webpack_require__(240);
+	
+	var _InputRange = __webpack_require__(251);
+	
+	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -3968,6 +4004,7 @@ webpackJsonp([0],[
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @module InputRange
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 	
+	
 	var InputRange = function (_React$Component) {
 	    _inherits(InputRange, _React$Component);
 	
@@ -3976,19 +4013,141 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (InputRange.__proto__ || Object.getPrototypeOf(InputRange)).call(this, props));
 	
-	        _this.state = {};
+	        _this.state = {
+	            value: 0
+	        };
+	        // auto bind function
+	        (0, _util.autobind)(['handleSliderMouseMove', 'handleTrackMouseDown', 'updatePosition'], _this);
 	        return _this;
 	    }
 	
 	    _createClass(InputRange, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            // update default value
+	            this.setState({
+	                value: this.props.defaultValue * (this.trackClientRect().width / (this.props.maxValue - this.props.minValue))
+	            });
+	        }
+	    }, {
+	        key: 'handleTrackMouseDown',
+	        value: function handleTrackMouseDown(event, track, position) {
+	            if (this.props.disabled) {
+	                return;
+	            }
+	            event.preventDefault();
+	            this.updatePosition(position);
+	        }
+	
+	        /**
+	         * handle any mousemove received by the silder
+	         * @param {SyntheticEvent} event - User event
+	         * @param {Slider} Slider element(Object) - React component
+	         */
+	
+	    }, {
+	        key: 'handleSliderMouseMove',
+	        value: function handleSliderMouseMove(event, slider) {
+	            if (this.props.disabled) {
+	                return;
+	            }
+	
+	            var position = _valueTransformer2.default.positionFromEvent(this, event);
+	            this.updatePosition(position);
+	        }
+	        /**
+	        * Update the position of a slider
+	        * @param {Point} position x/y
+	        */
+	
+	    }, {
+	        key: 'updatePosition',
+	        value: function updatePosition(position) {
+	            var changeValue = _valueTransformer2.default.valueFromPosition(this, position);
+	            this.setState({
+	                value: changeValue * (this.trackClientRect().width / (this.props.maxValue - this.props.minValue))
+	            });
+	            this.props.onChange(changeValue);
+	        }
+	        /**
+	         * Return the clientRect of the component's track
+	         * @member {ClientRect}
+	         */
+	
+	    }, {
+	        key: 'trackClientRect',
+	        value: function trackClientRect() {
+	            var track = this.refs.track;
+	
+	            if (track) {
+	                return track.clientRect;
+	            }
+	            return { height: 0, left: 0, top: 0, width: 0 };
+	        }
+	
+	        /**
+	        * Get an array of slider HTML for rendering
+	        * @return {Array.<string>} Array of HTML
+	        */
+	
+	    }, {
+	        key: 'renderSlider',
+	        value: function renderSlider() {
+	            var slider = _react2.default.createElement(_Slider2.default, {
+	                onSliderMouseMove: this.handleSliderMouseMove
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(_Slider2.default, null);
+	            return _react2.default.createElement(
+	                'div',
+	                { className: (0, _classnames2.default)(_InputRange2.default.container, this.props.className) },
+	                _react2.default.createElement(
+	                    _Track2.default,
+	                    {
+	                        trackBackColor: this.props.trackBackColor,
+	                        trackChangeColor: this.props.trackChangeColor,
+	                        orient: this.props.orient,
+	                        ref: 'track',
+	                        positionValue: this.state.value,
+	                        onTrackMouseDown: this.handleTrackMouseDown },
+	                    _react2.default.createElement(_Slider2.default, {
+	                        labelDisable: this.props.labelDisable,
+	                        buttonStyles: this.props.buttonStyles,
+	                        orient: this.props.orient,
+	                        buttonheight: this.props.buttonheight,
+	                        buttonwidth: this.props.buttonwidth,
+	                        buttonColor: this.props.buttonColor,
+	                        positionValue: this.state.value,
+	                        value: this.props.value,
+	                        onSliderMouseMove: this.handleSliderMouseMove
+	                    })
+	                )
+	            );
 	        }
 	    }]);
 	
 	    return InputRange;
 	}(_react2.default.Component);
+	
+	InputRange.defaultProps = {
+	    className: null,
+	    orient: 'horizontal',
+	    defaultValue: 0,
+	    disabled: false,
+	    buttonheight: '15px',
+	    buttonwidth: '15px',
+	    buttonColor: 'black',
+	    buttonStyles: null,
+	    labelDisable: false,
+	    trackBackColor: '#eeeeee',
+	    trackChangeColor: '#e03d3d',
+	    maxValue: 10,
+	    minValue: 0,
+	    step: 1,
+	    value: null
+	};
 	
 	exports.default = InputRange;
 
@@ -3996,17 +4155,83 @@ webpackJsonp([0],[
 /* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var hasOwn = {}.hasOwnProperty;
+	
+		function classNames () {
+			var classes = [];
+	
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+	
+				var argType = typeof arg;
+	
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _util = __webpack_require__(240);
+	
+	var _Label = __webpack_require__(241);
+	
+	var _Label2 = _interopRequireDefault(_Label);
+	
+	var _Slider = __webpack_require__(244);
+	
+	var _Slider2 = _interopRequireDefault(_Slider);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -4022,42 +4247,113 @@ webpackJsonp([0],[
 	    function Slider(props) {
 	        _classCallCheck(this, Slider);
 	
-	        return _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, props));
+	        // Auto-bind
+	        var _this = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, props));
+	
+	        (0, _util.autobind)(['handleClick', 'handleMouseDown', 'handleMouseUp', 'handleMouseMove'], _this);
+	        return _this;
 	    }
+	    /**
+	     * label value update
+	     * @param {ref} ref - Label's ref
+	     */
+	
 	
 	    _createClass(Slider, [{
-	        key: "outputUpdate",
+	        key: 'outputUpdate',
 	        value: function outputUpdate() {
 	            this.refs.volume.value = this.refs.fader.value;
-	            console.log(vol);
 	        }
+	        /**
+	        * Handle any click event received by the component
+	        * @param {SyntheticEvent} event - User event
+	        */
+	
 	    }, {
-	        key: "render",
+	        key: 'handleClick',
+	        value: function handleClick(event) {
+	            //prevent any default event
+	            event.preventDefault();
+	        }
+	        /**
+	        * handle any mousemove event received by the component
+	        * @param {SyntheticEvent} event - User event
+	        */
+	
+	    }, {
+	        key: 'handleMouseMove',
+	        value: function handleMouseMove(event) {
+	            // use props event
+	            this.props.onSliderMouseMove(event, this);
+	        }
+	        /**
+	         * handle any mouseup event received by the component
+	         * @param {SyntheticEvent} event - User event
+	         */
+	
+	    }, {
+	        key: 'handleMouseUp',
+	        value: function handleMouseUp(event) {
+	            // remove EventListener
+	            document.removeEventListener('mousemove', this.handleMouseMove);
+	            document.removeEventListener('mouseup', this.handleMouseUp);
+	        }
+	
+	        /**
+	        * handle any mousedown event received by the component
+	        * @param {SyntheticEvent} event - user event
+	        */
+	
+	    }, {
+	        key: 'handleMouseDown',
+	        value: function handleMouseDown(event) {
+	            // add EventListener
+	            document.addEventListener('mousemove', this.handleMouseMove);
+	            document.addEventListener('mouseup', this.handleMouseUp);
+	        }
+	        /**
+	        * Render method of the component
+	        * @return {string} Component JSX
+	        */
+	
+	    }, {
+	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                "span",
-	                null,
-	                _react2.default.createElement(
-	                    "label",
-	                    { "for": "fader" },
-	                    "Volume"
-	                ),
-	                _react2.default.createElement("a", { type: "range",
-	                    id: "fader",
-	                    ref: "fader",
-	                    min: "1",
-	                    max: "100",
-	
-	                    step: "1",
-	                    "aria-valuemin": "1",
-	                    "aria-valuemax": "100",
-	                    "aria-valuenow": "20",
-	                    onMouseUp: this.outputUpdate.bind(this) }),
-	                _react2.default.createElement(
-	                    "output",
-	                    { "for": "fader", id: "volume", ref: "volume" },
-	                    "50"
-	                )
+	                'span',
+	                {
+	                    className: _Slider2.default.container,
+	                    style: {
+	                        left: this.props.positionValue + 'px',
+	                        position: 'absolute',
+	                        marginLeft: '-' + this.props.buttonwidth,
+	                        width: this.props.buttonwidth,
+	                        height: this.props.buttonheight
+	                    } },
+	                _react2.default.createElement(_Label2.default, {
+	                    style: {
+	                        marginTop: '-' + this.props.buttonheight,
+	                        display: this.props.labelDisable ? 'none' : 'inline'
+	                    },
+	                    value: this.props.value }),
+	                _react2.default.createElement('a', {
+	                    className: _Slider2.default.slider,
+	                    style: _extends({}, this.props.buttonStyles, {
+	                        backgroundColor: this.props.buttonColor,
+	                        width: this.props.buttonwidth,
+	                        height: this.props.buttonheight
+	                    }),
+	                    type: 'range',
+	                    id: 'fader',
+	                    ref: 'fader',
+	                    min: '1',
+	                    max: '100',
+	                    step: '1',
+	                    'aria-valuemin': '1',
+	                    'aria-valuemax': '100',
+	                    'aria-valuenow': '20',
+	                    onClick: this.handleClick,
+	                    onMouseDown: this.handleMouseDown })
 	            );
 	        }
 	    }]);
@@ -4068,56 +4364,92 @@ webpackJsonp([0],[
 	exports.default = Slider;
 
 /***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(240);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(221)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css", function() {
-				var newContent = require("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
 /* 240 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	exports = module.exports = __webpack_require__(220)();
-	// imports
+	"use strict";
 	
-	
-	// module
-	exports.push([module.id, "._3YbmZmrQGxGVD1tY8xltBm {\n  width: 100px;\n  margin-left: 30px;\n  float: left;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC {\n  -webkit-appearance: none;\n  width: 100%;\n  /* Firefox下所需 */\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  position: relative;\n  /* 設為相對位置，為了前後區塊的絕對位置而設定 */\n  width: 10px;\n  height: 10px;\n  background: #f22;\n  border-radius: 50%;\n  transition: 0.2s;\n  /* 點選放大時候的漸變時間 */\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:after,\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:before {\n  position: absolute;\n  top: 3px;\n  width: 2000px;\n  background: #f22;\n  /* 長度很長沒關係，因為剛剛有用 overflow:hidden 了 */\n  height: 4px;\n  content: \"\";\n  pointer-events: none;\n  /* 讓滑鼠可以點擊穿透偽元素，不然會點不到下面 */\n  transition: 0.2s;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:before {\n  left: -1997px;\n  background: #f22;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:after {\n  left: 10px;\n  background: #edc;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb:after,\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb:before {\n  top: 6px;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb {\n  width: 16px;\n  height: 16px;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb:after {\n  left: 16px;\n}\n", ""]);
-	
-	// exports
-	exports.locals = {
-		"container": "_3YbmZmrQGxGVD1tY8xltBm",
-		"progressbar": "OVY28XnS8uobYGZPoD2HC"
-	};
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.autobind = autobind;
+	/**
+	 * Bind all methods of an object to itself
+	 * @static
+	 * @param {Array.<Function>} methodNames
+	 * @param {Object} instance
+	 */
+	function autobind(methodNames, instance) {
+	    methodNames.forEach(function (methodName) {
+	        instance[methodName] = instance[methodName].bind(instance);
+	    });
+	}
 
 /***/ },
 /* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Label = __webpack_require__(242);
+	
+	var _Label2 = _interopRequireDefault(_Label);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Label = function (_React$Component) {
+	    _inherits(Label, _React$Component);
+	
+	    function Label(props) {
+	        _classCallCheck(this, Label);
+	
+	        return _possibleConstructorReturn(this, (Label.__proto__ || Object.getPrototypeOf(Label)).call(this, props));
+	    }
+	
+	    _createClass(Label, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                {
+	                    className: _Label2.default.container,
+	                    style: _extends({}, this.props.style) },
+	                this.props.value
+	            );
+	        }
+	    }]);
+	
+	    return Label;
+	}(_react2.default.Component);
+	
+	exports.default = Label;
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(242);
+	var content = __webpack_require__(243);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -4126,8 +4458,8 @@ webpackJsonp([0],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css", function() {
-				var newContent = require("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css");
+			module.hot.accept("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./Label.css", function() {
+				var newContent = require("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./Label.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -4137,7 +4469,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -4145,19 +4477,147 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "/*\n    MIXINS\n*/\n._24PGfrGGkf54IkX6qrv-yI {\n  *zoom: 1;\n}\n._24PGfrGGkf54IkX6qrv-yI:after,\n._24PGfrGGkf54IkX6qrv-yI:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._24PGfrGGkf54IkX6qrv-yI:after {\n  clear: both;\n}\n._18Sa8VZSJYKHMqTYDjBrtN {\n  width: 100%;\n  height: 34px;\n  display: block;\n  float: left;\n  position: absolute;\n  bottom: 0;\n}\n._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF {\n  width: 100%;\n  height: 100%;\n  background-color: #3f464d;\n  opacity: 0;\n  transition: opacity 0.2s ease-in;\n  box-sizing: border-box;\n}\n._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF * {\n  height: 100%;\n  color: white;\n}\n.lOk_bQ5ETI2xqIC4fsbZb {\n  height: 96%;\n  position: relative;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  display: block;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb {\n  *zoom: 1;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after,\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after {\n  clear: both;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb > * {\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:focus {\n  outline: none!important;\n}\n.lOk_bQ5ETI2xqIC4fsbZb > video {\n  display: block;\n  height: 100%;\n  position: relative;\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._18Sa8VZSJYKHMqTYDjBrtN {\n  width: 100%;\n  height: 34px;\n  display: block;\n  float: left;\n  position: absolute;\n  bottom: 0;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF {\n  width: 100%;\n  height: 100%;\n  background-color: #3f464d;\n  opacity: 0;\n  transition: opacity 0.2s ease-in;\n  box-sizing: border-box;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF * {\n  height: 100%;\n  color: white;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:hover ._3XuSLxr7gy62pvRB64NyeF {\n  opacity: 0.9;\n}\n", ""]);
+	exports.push([module.id, ".oUi87dS3sDuGHSjNkAImH {\n  position: absolute;\n  color: #aaaaaa;\n  font-family: \"Helvetica Neue\", san-serif;\n  font-size: 0.8rem;\n  white-space: nowrap;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"clearfix": "_24PGfrGGkf54IkX6qrv-yI",
-		"container": "_18Sa8VZSJYKHMqTYDjBrtN",
-		"controlsField": "_3XuSLxr7gy62pvRB64NyeF",
-		"videoField": "lOk_bQ5ETI2xqIC4fsbZb",
-		"no-flexboxlegacy": "_1DUVdQlY9wJNSYemWPM3U_"
+		"container": "oUi87dS3sDuGHSjNkAImH"
 	};
 
 /***/ },
-/* 243 */
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(245);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(221)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./Slider.css", function() {
+				var newContent = require("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./Slider.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 245 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(220)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".rhuG9zQTp8tlvHg7S-iwq {\n  transition: left 0.3s ease-out;\n}\n.rhuG9zQTp8tlvHg7S-iwq ._2bgg_a1Y8BrFcM3Eh8JGDI {\n  border-radius: 100%;\n  display: inline-block;\n}\n.rhuG9zQTp8tlvHg7S-iwq:active {\n  -ms-transform: scale(1.3);\n      transform: scale(1.3);\n}\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"container": "rhuG9zQTp8tlvHg7S-iwq",
+		"slider": "_2bgg_a1Y8BrFcM3Eh8JGDI"
+	};
+
+/***/ },
+/* 246 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _lodash = __webpack_require__(247);
+	
+	var _lodash2 = _interopRequireDefault(_lodash);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	/**
+	 * [positionFromEvent description]
+	 * @param  {InputRange} inputRange [React component]
+	 * @param  {event} event      [User event]
+	 * @return {position}            [Slider position]
+	 */
+	function positionFromEvent(inputRange, event) {
+	    var trackClientRect = inputRange.trackClientRect();
+	    var length = trackClientRect.width;
+	
+	    var _ref = event.touches ? event.touches[0] : event,
+	        clientX = _ref.clientX;
+	
+	    var position = {
+	        x: Math.min(Math.max(clientX - trackClientRect.left, 0), length),
+	        y: 0
+	    };
+	    return position;
+	};
+	function stepValueFromValue(inputRange, value) {
+	    return Math.round(value / inputRange.props.step) * inputRange.props.step;
+	}
+	/**
+	 * [percentageFromPosition description]
+	 * @param  {[type]} inputRange [description]
+	 * @param  {[type]} position   [description]
+	 * @return {[type]}            [description]
+	 */
+	function percentageFromPosition(inputRange, position) {
+	    if (inputRange.props.orient == 'horizontal') {
+	        var length = inputRange.trackClientRect().width;
+	        var sizePerc = position.x / length;
+	        return sizePerc || 0;
+	    } else {
+	        var _length = inputRange.trackClientRect().height;
+	        var _sizePerc = position.y / _length;
+	        return _sizePerc || 0;
+	    }
+	}
+	
+	/**
+	 * [valueFromPosition description]
+	 * @param  {[type]} inputRange [description]
+	 * @param  {[type]} position   [description]
+	 * @return {[type]}            [description]
+	 */
+	function valueFromPosition(inputRange, position) {
+	    var sizePerc = percentageFromPosition(inputRange, position);
+	    var valueDiff = inputRange.props.maxValue - inputRange.props.minValue;
+	    var value = inputRange.props.minValue + valueDiff * sizePerc;
+	    value = stepValueFromValue(inputRange, value);
+	    return value;
+	}
+	
+	/**
+	 * Extract values from props
+	 * @static
+	 * @param {InputRange} inputRange
+	 * @param {Point} [props=inputRange.props]
+	 * @return {Range} Range values
+	 */
+	function valuesFromProps(inputRange) {
+	    var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : inputRange,
+	        props = _ref2.props;
+	};
+	
+	exports.default = {
+	    positionFromEvent: positionFromEvent,
+	    valuesFromProps: valuesFromProps,
+	    valueFromPosition: valueFromPosition,
+	    stepValueFromValue: stepValueFromValue
+	};
+
+/***/ },
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -21248,7 +21708,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(192)(module)))
 
 /***/ },
-/* 244 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21263,7 +21723,289 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _overlay = __webpack_require__(245);
+	var _util = __webpack_require__(240);
+	
+	var _Track = __webpack_require__(249);
+	
+	var _Track2 = _interopRequireDefault(_Track);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Track = function (_React$Component) {
+	    _inherits(Track, _React$Component);
+	
+	    function Track(props) {
+	        _classCallCheck(this, Track);
+	
+	        var _this = _possibleConstructorReturn(this, (Track.__proto__ || Object.getPrototypeOf(Track)).call(this, props));
+	
+	        (0, _util.autobind)(['handleMouseDown'], _this);
+	        return _this;
+	    }
+	    /**
+	    * Handle any mousedown event received by the component
+	    * @param {SyntheticEvent} event - User event
+	    */
+	
+	
+	    _createClass(Track, [{
+	        key: 'handleMouseDown',
+	        value: function handleMouseDown(event) {
+	            var trackClientRect = this.clientRect;
+	
+	            var _ref = event.touches ? event.touches[0] : event,
+	                clientX = _ref.clientX;
+	
+	            var position = {
+	                x: clientX - trackClientRect.left,
+	                y: 0
+	            };
+	
+	            this.props.onTrackMouseDown(event, this, position);
+	        }
+	
+	        /**
+	        * Return the clientRect of the component
+	        * @member {ClientRect}
+	        */
+	
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                {
+	                    onMouseDown: this.handleMouseDown,
+	                    ref: 'track',
+	                    className: _Track2.default.container },
+	                _react2.default.createElement('div', {
+	                    className: _Track2.default.track,
+	                    style: {
+	                        width: this.props.positionValue + 'px',
+	                        backgroundColor: this.props.trackChangeColor
+	                    } }),
+	                _react2.default.createElement('div', {
+	                    className: _Track2.default.backtrack,
+	                    style: { backgroundColor: this.props.trackBackColor } }),
+	                this.props.children
+	            );
+	        }
+	    }, {
+	        key: 'clientRect',
+	        get: function get() {
+	            var track = this.refs.track;
+	
+	            var clientRect = track.getBoundingClientRect();
+	            return clientRect;
+	        }
+	    }]);
+	
+	    return Track;
+	}(_react2.default.Component);
+	
+	exports.default = Track;
+
+/***/ },
+/* 249 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(250);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(221)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./Track.css", function() {
+				var newContent = require("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./Track.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 250 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(220)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "/*\n    MIXINS\n*/\n._1ubqbyyxTOw61s_02fj15c {\n  *zoom: 1;\n}\n._1ubqbyyxTOw61s_02fj15c:after,\n._1ubqbyyxTOw61s_02fj15c:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._1ubqbyyxTOw61s_02fj15c:after {\n  clear: both;\n}\n._3w-SyRGNkFp_DK1CzbWCih {\n  height: 100%;\n  width: 100%;\n  position: relative;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n}\n._2dcx7LaJbHi6NqgW3r5WlD ._3w-SyRGNkFp_DK1CzbWCih {\n  *zoom: 1;\n}\n._2dcx7LaJbHi6NqgW3r5WlD ._3w-SyRGNkFp_DK1CzbWCih:after,\n._2dcx7LaJbHi6NqgW3r5WlD ._3w-SyRGNkFp_DK1CzbWCih:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._2dcx7LaJbHi6NqgW3r5WlD ._3w-SyRGNkFp_DK1CzbWCih:after {\n  clear: both;\n}\n._2dcx7LaJbHi6NqgW3r5WlD ._3w-SyRGNkFp_DK1CzbWCih > * {\n  float: left;\n}\n._3w-SyRGNkFp_DK1CzbWCih ._2LFaHbdvUzGNlNF-G6Tq3- {\n  -ms-flex: 1;\n  flex: 1;\n  width: 100%;\n  height: 10%;\n}\n._3NMq1ts1k9Zw5vsjwVkSKa ._3w-SyRGNkFp_DK1CzbWCih ._2LFaHbdvUzGNlNF-G6Tq3- {\n  width: 100%;\n}\n._3w-SyRGNkFp_DK1CzbWCih ._3zEMbeNnz6HA08fSPn9HRM {\n  height: 10%;\n  transition: width 0.3s ease-out;\n}\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"clearfix": "_1ubqbyyxTOw61s_02fj15c",
+		"container": "_3w-SyRGNkFp_DK1CzbWCih",
+		"no-flexboxlegacy": "_2dcx7LaJbHi6NqgW3r5WlD",
+		"backtrack": "_2LFaHbdvUzGNlNF-G6Tq3-",
+		"no-flexbox": "_3NMq1ts1k9Zw5vsjwVkSKa",
+		"track": "_3zEMbeNnz6HA08fSPn9HRM"
+	};
+
+/***/ },
+/* 251 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(252);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(221)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./InputRange.css", function() {
+				var newContent = require("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./InputRange.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 252 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(220)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "._2zf-g63MtnSKVh6lImQp95 {\n  width: 300px;\n  height: 35px;\n}\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"container": "_2zf-g63MtnSKVh6lImQp95"
+	};
+
+/***/ },
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(254);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(221)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css", function() {
+				var newContent = require("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(220)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "._3YbmZmrQGxGVD1tY8xltBm {\n  width: 100px;\n  margin-left: 30px;\n  float: left;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC {\n  -webkit-appearance: none;\n  width: 100%;\n  /* Firefox下所需 */\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  position: relative;\n  /* 設為相對位置，為了前後區塊的絕對位置而設定 */\n  width: 10px;\n  height: 10px;\n  background: #f22;\n  border-radius: 50%;\n  transition: 0.2s;\n  /* 點選放大時候的漸變時間 */\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:after,\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:before {\n  position: absolute;\n  top: 3px;\n  width: 2000px;\n  background: #f22;\n  /* 長度很長沒關係，因為剛剛有用 overflow:hidden 了 */\n  height: 4px;\n  content: \"\";\n  pointer-events: none;\n  /* 讓滑鼠可以點擊穿透偽元素，不然會點不到下面 */\n  transition: 0.2s;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:before {\n  left: -1997px;\n  background: #f22;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:after {\n  left: 10px;\n  background: #edc;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb:after,\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb:before {\n  top: 6px;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb {\n  width: 16px;\n  height: 16px;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb:after {\n  left: 16px;\n}\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"container": "_3YbmZmrQGxGVD1tY8xltBm",
+		"progressbar": "OVY28XnS8uobYGZPoD2HC"
+	};
+
+/***/ },
+/* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(256);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(221)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css", function() {
+				var newContent = require("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(220)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "/*\n    MIXINS\n*/\n._24PGfrGGkf54IkX6qrv-yI {\n  *zoom: 1;\n}\n._24PGfrGGkf54IkX6qrv-yI:after,\n._24PGfrGGkf54IkX6qrv-yI:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._24PGfrGGkf54IkX6qrv-yI:after {\n  clear: both;\n}\n._18Sa8VZSJYKHMqTYDjBrtN {\n  width: 100%;\n  height: 34px;\n  display: block;\n  float: left;\n  position: absolute;\n  bottom: 0;\n}\n._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF {\n  width: 100%;\n  height: 100%;\n  background-color: #3f464d;\n  opacity: 0;\n  transition: opacity 0.2s ease-in;\n  box-sizing: border-box;\n}\n._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF * {\n  height: 100%;\n  color: white;\n}\n.lOk_bQ5ETI2xqIC4fsbZb {\n  height: 96%;\n  position: relative;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  display: block;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb {\n  *zoom: 1;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after,\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after {\n  clear: both;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb > * {\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:focus {\n  outline: none!important;\n}\n.lOk_bQ5ETI2xqIC4fsbZb > video {\n  display: block;\n  height: 100%;\n  position: relative;\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._18Sa8VZSJYKHMqTYDjBrtN {\n  width: 100%;\n  height: 34px;\n  display: block;\n  float: left;\n  position: absolute;\n  bottom: 0;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF {\n  width: 100%;\n  height: 100%;\n  background-color: #3f464d;\n  opacity: 0;\n  transition: opacity 0.2s ease-in;\n  box-sizing: border-box;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF * {\n  height: 100%;\n  color: white;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:hover ._3XuSLxr7gy62pvRB64NyeF {\n  opacity: 0.9;\n}\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"clearfix": "_24PGfrGGkf54IkX6qrv-yI",
+		"container": "_18Sa8VZSJYKHMqTYDjBrtN",
+		"controlsField": "_3XuSLxr7gy62pvRB64NyeF",
+		"videoField": "lOk_bQ5ETI2xqIC4fsbZb",
+		"no-flexboxlegacy": "_1DUVdQlY9wJNSYemWPM3U_"
+	};
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _overlay = __webpack_require__(258);
 	
 	var _overlay2 = _interopRequireDefault(_overlay);
 	
@@ -21310,13 +22052,13 @@ webpackJsonp([0],[
 	exports.default = Overlay;
 
 /***/ },
-/* 245 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(246);
+	var content = __webpack_require__(259);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -21336,7 +22078,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 246 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -21355,13 +22097,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 247 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(248);
+	var content = __webpack_require__(261);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -21381,7 +22123,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 248 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -21395,13 +22137,13 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 249 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(250);
+	var content = __webpack_require__(263);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -21421,7 +22163,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 250 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();

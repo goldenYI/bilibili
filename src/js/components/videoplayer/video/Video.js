@@ -19,7 +19,8 @@ class Video extends React.Component {
             playbackRate: 1,
             error: false,
             loading: false,
-            focused: false
+            focused: false,
+            inputRangeValue: 0,
         };
         this.EVENTS = [
             'onAbort',
@@ -345,7 +346,11 @@ class Video extends React.Component {
     onBlur() {
         this.setState({focused: false});
     }
-
+    handleInputRangeChange(changeValue) {
+        this.setState({
+            inputRangeValue: changeValue
+        });
+    }
     render() {
         // If controls prop is provided remove it
         // and use our own controls.
@@ -374,7 +379,17 @@ class Video extends React.Component {
                 <Controls
                     paused={this.state.paused}
                     togglePlay={this.togglePlay.bind(this)}/>
-                <InputRange />
+                <InputRange
+                    defaultValue={0}
+                    disabled={false}
+                    buttonColor={'#5caf9e'}
+                    buttonwidth={'8px'}
+                    buttonStyles={{
+                        borderRadius: '10%',
+                    }}
+                    labelDisable={true}
+                    value={this.state.inputRangeValue}
+                    onChange={this.handleInputRangeChange.bind(this)}/>
             </div>
         );
     }

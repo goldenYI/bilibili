@@ -1,0 +1,11 @@
+.container {
+  transition: left 0.3s ease-out;
+}
+.container .slider {
+  border-radius: 100%;
+  display: inline-block;
+}
+.container:active {
+  -ms-transform: scale(1.3);
+      transform: scale(1.3);
+}
