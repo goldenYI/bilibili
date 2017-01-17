@@ -3,7 +3,7 @@ import Controls from './../controls/Controls';
 import throttle from 'lodash';
 import Overlay from './../controls/overlay/Overlay';
 import styles from 'style/videoplayer/video/index.css';
-import InputRange from 'components/react-input-range/InputRange.js';
+
 class Video extends React.Component {
     constructor(props) {
         super(props);
@@ -20,7 +20,7 @@ class Video extends React.Component {
             error: false,
             loading: false,
             focused: false,
-            inputRangeValue: 0,
+
         };
         this.EVENTS = [
             'onAbort',
@@ -346,11 +346,6 @@ class Video extends React.Component {
     onBlur() {
         this.setState({focused: false});
     }
-    handleInputRangeChange(changeValue) {
-        this.setState({
-            inputRangeValue: changeValue
-        });
-    }
     render() {
         // If controls prop is provided remove it
         // and use our own controls.
@@ -363,7 +358,6 @@ class Video extends React.Component {
             ...otherProps,
         } = this.props;
         return (
-
             <div
                 className={styles.videoField}
                 tabIndex="0"
@@ -377,19 +371,9 @@ class Video extends React.Component {
                     onClick={this.togglePlay.bind(this)}></video>
                 {this.state.paused ? <Overlay togglePlay={this.togglePlay.bind(this)} /> : <div></div> }
                 <Controls
+                    className={styles.controlsField}
                     paused={this.state.paused}
                     togglePlay={this.togglePlay.bind(this)}/>
-                <InputRange
-                    defaultValue={0}
-                    disabled={false}
-                    buttonColor={'#5caf9e'}
-                    buttonwidth={'8px'}
-                    buttonStyles={{
-                        borderRadius: '10%',
-                    }}
-                    labelDisable={true}
-                    value={this.state.inputRangeValue}
-                    onChange={this.handleInputRangeChange.bind(this)}/>
             </div>
         );
     }

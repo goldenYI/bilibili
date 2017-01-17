@@ -2448,9 +2448,9 @@ webpackJsonp([0],[
 	
 	var _VideoPlayer2 = _interopRequireDefault(_VideoPlayer);
 	
-	__webpack_require__(260);
+	__webpack_require__(262);
 	
-	var _app = __webpack_require__(262);
+	var _app = __webpack_require__(264);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
@@ -2570,9 +2570,7 @@ webpackJsonp([0],[
 	        value: function componentWillUnmount() {}
 	    }, {
 	        key: 'onClickSubmit',
-	        value: function onClickSubmit() {
-	            console.log(123);
-	        }
+	        value: function onClickSubmit() {}
 	    }, {
 	        key: 'render',
 	        value: function render() {
@@ -3092,7 +3090,7 @@ webpackJsonp([0],[
 	                        'div',
 	                        { className: _index2.default.playerField },
 	                        _react2.default.createElement(_Video2.default, {
-	                            src: 'http://www.bilibilijj.com/FreeDown/DownLoad/1484151127/mp4/12994573.5CBA8A4588626537F875DCBB4D2088F5',
+	                            src: 'http://www.bilibilijj.com/FreeDown/DownLoad/1484575494/mp4/12994573.3E58501038C1E6A5A96BEE33471964A1',
 	                            controls: true, autoPlay: true, loop: true, muted: true })
 	                    )
 	                )
@@ -3182,13 +3180,9 @@ webpackJsonp([0],[
 	
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 	
-	var _index = __webpack_require__(255);
+	var _index = __webpack_require__(260);
 	
 	var _index2 = _interopRequireDefault(_index);
-	
-	var _InputRange = __webpack_require__(237);
-	
-	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -3220,8 +3214,8 @@ webpackJsonp([0],[
 	            playbackRate: 1,
 	            error: false,
 	            loading: false,
-	            focused: false,
-	            inputRangeValue: 0
+	            focused: false
+	
 	        };
 	        _this.EVENTS = ['onAbort', 'onCanPlay', 'onCanPlayThrough', 'onDurationChange', 'onEmptied', 'onEncrypted', 'onEnded', 'onError', 'onLoadedData', 'onLoadedMetadata', 'onLoadStart', 'onPause', 'onPlay', 'onPlaying', 'onProgress', 'onRateChange', 'onSeeked', 'onSeeking', 'onStalled', 'onSuspend', 'onTimeUpdate', 'onVolumeChange', 'onWaiting'];
 	        return _this;
@@ -3588,13 +3582,6 @@ webpackJsonp([0],[
 	            this.setState({ focused: false });
 	        }
 	    }, {
-	        key: 'handleInputRangeChange',
-	        value: function handleInputRangeChange(changeValue) {
-	            this.setState({
-	                inputRangeValue: changeValue
-	            });
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this3 = this;
@@ -3624,19 +3611,9 @@ webpackJsonp([0],[
 	                    onClick: this.togglePlay.bind(this) }),
 	                this.state.paused ? _react2.default.createElement(_Overlay2.default, { togglePlay: this.togglePlay.bind(this) }) : _react2.default.createElement('div', null),
 	                _react2.default.createElement(_Controls2.default, {
+	                    className: _index2.default.controlsField,
 	                    paused: this.state.paused,
-	                    togglePlay: this.togglePlay.bind(this) }),
-	                _react2.default.createElement(_InputRange2.default, {
-	                    defaultValue: 0,
-	                    disabled: false,
-	                    buttonColor: '#5caf9e',
-	                    buttonwidth: '8px',
-	                    buttonStyles: {
-	                        borderRadius: '10%'
-	                    },
-	                    labelDisable: true,
-	                    value: this.state.inputRangeValue,
-	                    onChange: this.handleInputRangeChange.bind(this) })
+	                    togglePlay: this.togglePlay.bind(this) })
 	            );
 	        }
 	    }]);
@@ -3676,13 +3653,21 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _VideoPlayButton = __webpack_require__(233);
+	var _classnames = __webpack_require__(233);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var _VideoPlayButton = __webpack_require__(234);
 	
 	var _VideoPlayButton2 = _interopRequireDefault(_VideoPlayButton);
 	
-	var _ProgressBar = __webpack_require__(236);
+	var _ProgressBar = __webpack_require__(237);
 	
 	var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
+	
+	var _InputRange = __webpack_require__(238);
+	
+	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
 	var _index = __webpack_require__(255);
 	
@@ -3702,23 +3687,47 @@ webpackJsonp([0],[
 	    function Controls(props) {
 	        _classCallCheck(this, Controls);
 	
-	        return _possibleConstructorReturn(this, (Controls.__proto__ || Object.getPrototypeOf(Controls)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (Controls.__proto__ || Object.getPrototypeOf(Controls)).call(this, props));
+	
+	        _this.state = {
+	            inputRangeValue: 0
+	        };
+	        return _this;
 	    }
 	
 	    _createClass(Controls, [{
+	        key: 'handleInputRangeChange',
+	        value: function handleInputRangeChange(changeValue) {
+	            this.setState({
+	                inputRangeValue: changeValue
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                {
-	                    className: _index2.default.container },
+	                { className: _index2.default.container },
 	                _react2.default.createElement('div', { className: _index2.default.divleft }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: _index2.default.controlsField },
+	                    { className: (0, _classnames2.default)(_index2.default.controlsField, this.props.className) },
+	                    _react2.default.createElement(_ProgressBar2.default, { className: _index2.default.progressbar }),
 	                    _react2.default.createElement(_VideoPlayButton2.default, {
 	                        paused: this.props.paused,
-	                        togglePlay: this.props.togglePlay })
+	                        togglePlay: this.props.togglePlay }),
+	                    _react2.default.createElement(_InputRange2.default, {
+	                        className: _index2.default.inputRange,
+	                        defaultValue: 5,
+	                        disabled: false,
+	                        buttonColor: '#5caf9e',
+	                        buttonwidth: '8px',
+	                        buttonStyles: {
+	                            borderRadius: '10%'
+	                        },
+	                        labelDisable: true,
+	                        value: this.state.inputRangeValue,
+	                        onChange: this.handleInputRangeChange.bind(this) })
 	                ),
 	                _react2.default.createElement('div', { className: _index2.default.divright })
 	            );
@@ -3739,6 +3748,60 @@ webpackJsonp([0],[
 /* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var hasOwn = {}.hasOwnProperty;
+	
+		function classNames () {
+			var classes = [];
+	
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+	
+				var argType = typeof arg;
+	
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 234 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -3755,7 +3818,7 @@ webpackJsonp([0],[
 	
 	var _assets2 = _interopRequireDefault(_assets);
 	
-	var _play_button = __webpack_require__(234);
+	var _play_button = __webpack_require__(235);
 	
 	var _play_button2 = _interopRequireDefault(_play_button);
 	
@@ -3813,13 +3876,13 @@ webpackJsonp([0],[
 	exports.default = VideoPlayButton;
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(235);
+	var content = __webpack_require__(236);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -3839,7 +3902,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -3847,16 +3910,17 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "/*\n    MIXINS\n*/\n.m7fXhX-rqOdH3jcn6GwHX {\n  *zoom: 1;\n}\n.m7fXhX-rqOdH3jcn6GwHX:after,\n.m7fXhX-rqOdH3jcn6GwHX:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.m7fXhX-rqOdH3jcn6GwHX:after {\n  clear: both;\n}\n._1W_SR8i2ZAMc7-kBserB22 {\n  float: left;\n  height: 34px;\n  width: 34px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  margin-left: 5px;\n}\n._1W_SR8i2ZAMc7-kBserB22 > img {\n  height: 40% !important;\n}\n", ""]);
+	exports.push([module.id, "/*\n    MIXINS\n*/\n.m7fXhX-rqOdH3jcn6GwHX {\n  *zoom: 1;\n}\n.m7fXhX-rqOdH3jcn6GwHX:after,\n.m7fXhX-rqOdH3jcn6GwHX:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.m7fXhX-rqOdH3jcn6GwHX:after {\n  clear: both;\n}\n._1W_SR8i2ZAMc7-kBserB22 {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  float: left;\n  height: 34px;\n  width: 34px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  margin-left: 5px;\n}\n._2L6aM9T1VdqnUPsirjYV3j ._1W_SR8i2ZAMc7-kBserB22 {\n  *zoom: 1;\n}\n._2L6aM9T1VdqnUPsirjYV3j ._1W_SR8i2ZAMc7-kBserB22:after,\n._2L6aM9T1VdqnUPsirjYV3j ._1W_SR8i2ZAMc7-kBserB22:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._2L6aM9T1VdqnUPsirjYV3j ._1W_SR8i2ZAMc7-kBserB22:after {\n  clear: both;\n}\n._2L6aM9T1VdqnUPsirjYV3j ._1W_SR8i2ZAMc7-kBserB22 > * {\n  float: left;\n}\n._1W_SR8i2ZAMc7-kBserB22 > img {\n  height: 40% !important;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
 		"clearfix": "m7fXhX-rqOdH3jcn6GwHX",
-		"playbutton": "_1W_SR8i2ZAMc7-kBserB22"
+		"playbutton": "_1W_SR8i2ZAMc7-kBserB22",
+		"no-flexboxlegacy": "_2L6aM9T1VdqnUPsirjYV3j"
 	};
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3871,13 +3935,15 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _InputRange = __webpack_require__(237);
+	var _InputRange = __webpack_require__(238);
 	
 	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
-	var _index = __webpack_require__(253);
+	var _progressbar = __webpack_require__(253);
 	
-	var _index2 = _interopRequireDefault(_index);
+	var _progressbar2 = _interopRequireDefault(_progressbar);
+	
+	var _util = __webpack_require__(240);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -3893,29 +3959,19 @@ webpackJsonp([0],[
 	    function ProgressBar(props) {
 	        _classCallCheck(this, ProgressBar);
 	
-	        return _possibleConstructorReturn(this, (ProgressBar.__proto__ || Object.getPrototypeOf(ProgressBar)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (ProgressBar.__proto__ || Object.getPrototypeOf(ProgressBar)).call(this, props));
+	
+	        _this.state = {
+	            inputRangeValue: 0
+	        };
+	        // auto bind function
+	        (0, _util.autobind)(['onChange', 'onBlur', 'onFocus', 'handleInputRangeChange'], _this);
+	        return _this;
 	    }
 	
 	    _createClass(ProgressBar, [{
-	        key: 'getDefaultProps',
-	        value: function getDefaultProps() {
-	            return {
-	                orientation: 'horizontal',
-	                step: 0.1,
-	                progress: 0,
-	                onChange: this.onChange,
-	                onFocus: this.onFocus,
-	                onBlur: this.onBlur
-	            };
-	        }
-	    }, {
 	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            // 'orient' is not supported by React but
-	            // is required for Firefox. Setting manually.
-	            // https://github.com/facebook/react/issues/2453
-	            this.refs.input.setAttribute('orient', this.props.orientation);
-	        }
+	        value: function componentDidMount() {}
 	    }, {
 	        key: 'onChange',
 	        value: function onChange() {
@@ -3932,13 +3988,29 @@ webpackJsonp([0],[
 	            // Placeholder
 	        }
 	    }, {
+	        key: 'handleInputRangeChange',
+	        value: function handleInputRangeChange(changeValue) {
+	            this.setState({
+	                inputRangeValue: changeValue
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: _index2.default.container },
-	                _react2.default.createElement(_InputRange2.default, null)
-	            );
+	            return _react2.default.createElement(_InputRange2.default, {
+	                className: this.props.className,
+	                defaultValue: 0,
+	                disabled: false,
+	                buttonColor: '#5caf9e',
+	                buttonwidth: 0,
+	                maxValue: 100,
+	                minValue: 0,
+	                buttonStyles: {
+	                    borderRadius: '10%'
+	                },
+	                labelDisable: true,
+	                value: this.state.inputRangeValue,
+	                onChange: this.handleInputRangeChange });
 	        }
 	    }]);
 	
@@ -3957,7 +4029,7 @@ webpackJsonp([0],[
 	exports.default = ProgressBar;
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3968,7 +4040,7 @@ webpackJsonp([0],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _classnames = __webpack_require__(238);
+	var _classnames = __webpack_require__(233);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -4014,10 +4086,11 @@ webpackJsonp([0],[
 	        var _this = _possibleConstructorReturn(this, (InputRange.__proto__ || Object.getPrototypeOf(InputRange)).call(this, props));
 	
 	        _this.state = {
-	            value: 0
+	            value: _this.props.defaultValue * (_this.trackClientRect().width / (_this.props.maxValue - _this.props.minValue))
 	        };
 	        // auto bind function
-	        (0, _util.autobind)(['handleSliderMouseMove', 'handleTrackMouseDown', 'updatePosition'], _this);
+	        (0, _util.autobind)(['handleSliderMouseMove', 'handleTrackMouseDown', 'updatePosition', 'componentDidMount', 'trackMoveStartEventListener', 'trackMoveEndEventListener'], _this);
+	
 	        return _this;
 	    }
 	
@@ -4084,18 +4157,23 @@ webpackJsonp([0],[
 	            }
 	            return { height: 0, left: 0, top: 0, width: 0 };
 	        }
-	
-	        /**
-	        * Get an array of slider HTML for rendering
-	        * @return {Array.<string>} Array of HTML
-	        */
-	
 	    }, {
-	        key: 'renderSlider',
-	        value: function renderSlider() {
-	            var slider = _react2.default.createElement(_Slider2.default, {
-	                onSliderMouseMove: this.handleSliderMouseMove
-	            });
+	        key: 'trackMoveStartEventListener',
+	        value: function trackMoveStartEventListener() {
+	            var slider = this.refs.slider;
+	
+	            if (slider) {
+	                slider.handleMouseDown();
+	            }
+	        }
+	    }, {
+	        key: 'trackMoveEndEventListener',
+	        value: function trackMoveEndEventListener() {
+	            var slider = this.refs.slider;
+	
+	            if (slider) {
+	                slider.handleMouseUp();
+	            }
 	        }
 	    }, {
 	        key: 'render',
@@ -4106,6 +4184,9 @@ webpackJsonp([0],[
 	                _react2.default.createElement(
 	                    _Track2.default,
 	                    {
+	                        trackMoveStartEventListener: this.trackMoveStartEventListener,
+	                        trackMoveEndEventListener: this.trackMoveEndEventListener,
+	                        style: this.props.trackStyles,
 	                        trackBackColor: this.props.trackBackColor,
 	                        trackChangeColor: this.props.trackChangeColor,
 	                        orient: this.props.orient,
@@ -4113,6 +4194,7 @@ webpackJsonp([0],[
 	                        positionValue: this.state.value,
 	                        onTrackMouseDown: this.handleTrackMouseDown },
 	                    _react2.default.createElement(_Slider2.default, {
+	                        ref: 'slider',
 	                        labelDisable: this.props.labelDisable,
 	                        buttonStyles: this.props.buttonStyles,
 	                        orient: this.props.orient,
@@ -4140,6 +4222,7 @@ webpackJsonp([0],[
 	    buttonwidth: '15px',
 	    buttonColor: 'black',
 	    buttonStyles: null,
+	    trackStyles: null,
 	    labelDisable: false,
 	    trackBackColor: '#eeeeee',
 	    trackChangeColor: '#e03d3d',
@@ -4150,60 +4233,6 @@ webpackJsonp([0],[
 	};
 	
 	exports.default = InputRange;
-
-/***/ },
-/* 238 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2016 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	/* global define */
-	
-	(function () {
-		'use strict';
-	
-		var hasOwn = {}.hasOwnProperty;
-	
-		function classNames () {
-			var classes = [];
-	
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-	
-				var argType = typeof arg;
-	
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
-				} else if (argType === 'object') {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				}
-			}
-	
-			return classes.join(' ');
-		}
-	
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	}());
-
 
 /***/ },
 /* 239 */
@@ -4253,17 +4282,10 @@ webpackJsonp([0],[
 	        (0, _util.autobind)(['handleClick', 'handleMouseDown', 'handleMouseUp', 'handleMouseMove'], _this);
 	        return _this;
 	    }
-	    /**
-	     * label value update
-	     * @param {ref} ref - Label's ref
-	     */
-	
 	
 	    _createClass(Slider, [{
-	        key: 'outputUpdate',
-	        value: function outputUpdate() {
-	            this.refs.volume.value = this.refs.fader.value;
-	        }
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {}
 	        /**
 	        * Handle any click event received by the component
 	        * @param {SyntheticEvent} event - User event
@@ -4326,7 +4348,7 @@ webpackJsonp([0],[
 	                    style: {
 	                        left: this.props.positionValue + 'px',
 	                        position: 'absolute',
-	                        marginLeft: '-' + this.props.buttonwidth,
+	                        marginLeft: '-' + this.props.buttonwidth / 2 + 'px',
 	                        width: this.props.buttonwidth,
 	                        height: this.props.buttonheight
 	                    } },
@@ -4343,15 +4365,6 @@ webpackJsonp([0],[
 	                        width: this.props.buttonwidth,
 	                        height: this.props.buttonheight
 	                    }),
-	                    type: 'range',
-	                    id: 'fader',
-	                    ref: 'fader',
-	                    min: '1',
-	                    max: '100',
-	                    step: '1',
-	                    'aria-valuemin': '1',
-	                    'aria-valuemax': '100',
-	                    'aria-valuenow': '20',
 	                    onClick: this.handleClick,
 	                    onMouseDown: this.handleMouseDown })
 	            );
@@ -21717,6 +21730,8 @@ webpackJsonp([0],[
 	    value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -21745,7 +21760,8 @@ webpackJsonp([0],[
 	
 	        var _this = _possibleConstructorReturn(this, (Track.__proto__ || Object.getPrototypeOf(Track)).call(this, props));
 	
-	        (0, _util.autobind)(['handleMouseDown'], _this);
+	        (0, _util.autobind)(['handleMouseDown', 'handleMouseUp'], _this);
+	
 	        return _this;
 	    }
 	    /**
@@ -21766,10 +21782,14 @@ webpackJsonp([0],[
 	                x: clientX - trackClientRect.left,
 	                y: 0
 	            };
-	
 	            this.props.onTrackMouseDown(event, this, position);
+	            this.props.trackMoveStartEventListener();
 	        }
-	
+	    }, {
+	        key: 'handleMouseUp',
+	        value: function handleMouseUp(event) {
+	            this.props.trackMoveEndEventListener();
+	        }
 	        /**
 	        * Return the clientRect of the component
 	        * @member {ClientRect}
@@ -21782,14 +21802,15 @@ webpackJsonp([0],[
 	                'div',
 	                {
 	                    onMouseDown: this.handleMouseDown,
+	                    onMouseUp: this.handleMouseUp,
 	                    ref: 'track',
 	                    className: _Track2.default.container },
 	                _react2.default.createElement('div', {
 	                    className: _Track2.default.track,
-	                    style: {
+	                    style: _extends({
 	                        width: this.props.positionValue + 'px',
 	                        backgroundColor: this.props.trackChangeColor
-	                    } }),
+	                    }, this.props.style) }),
 	                _react2.default.createElement('div', {
 	                    className: _Track2.default.backtrack,
 	                    style: { backgroundColor: this.props.trackBackColor } }),
@@ -21916,8 +21937,8 @@ webpackJsonp([0],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css", function() {
-				var newContent = require("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css");
+			module.hot.accept("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./progressbar.css", function() {
+				var newContent = require("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./progressbar.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21935,12 +21956,11 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "._3YbmZmrQGxGVD1tY8xltBm {\n  width: 100px;\n  margin-left: 30px;\n  float: left;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC {\n  -webkit-appearance: none;\n  width: 100%;\n  /* Firefox下所需 */\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  position: relative;\n  /* 設為相對位置，為了前後區塊的絕對位置而設定 */\n  width: 10px;\n  height: 10px;\n  background: #f22;\n  border-radius: 50%;\n  transition: 0.2s;\n  /* 點選放大時候的漸變時間 */\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:after,\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:before {\n  position: absolute;\n  top: 3px;\n  width: 2000px;\n  background: #f22;\n  /* 長度很長沒關係，因為剛剛有用 overflow:hidden 了 */\n  height: 4px;\n  content: \"\";\n  pointer-events: none;\n  /* 讓滑鼠可以點擊穿透偽元素，不然會點不到下面 */\n  transition: 0.2s;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:before {\n  left: -1997px;\n  background: #f22;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC::-webkit-slider-thumb:after {\n  left: 10px;\n  background: #edc;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb:after,\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb:before {\n  top: 6px;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb {\n  width: 16px;\n  height: 16px;\n}\n._3YbmZmrQGxGVD1tY8xltBm .OVY28XnS8uobYGZPoD2HC:active::-webkit-slider-thumb:after {\n  left: 16px;\n}\n", ""]);
+	exports.push([module.id, "._2GbdeE6Mze0WrMazuYATbZ {\n  width: 100px;\n  margin-left: 30px;\n  float: left;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"container": "_3YbmZmrQGxGVD1tY8xltBm",
-		"progressbar": "OVY28XnS8uobYGZPoD2HC"
+		"container": "_2GbdeE6Mze0WrMazuYATbZ"
 	};
 
 /***/ },
@@ -21978,15 +21998,15 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "/*\n    MIXINS\n*/\n._24PGfrGGkf54IkX6qrv-yI {\n  *zoom: 1;\n}\n._24PGfrGGkf54IkX6qrv-yI:after,\n._24PGfrGGkf54IkX6qrv-yI:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._24PGfrGGkf54IkX6qrv-yI:after {\n  clear: both;\n}\n._18Sa8VZSJYKHMqTYDjBrtN {\n  width: 100%;\n  height: 34px;\n  display: block;\n  float: left;\n  position: absolute;\n  bottom: 0;\n}\n._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF {\n  width: 100%;\n  height: 100%;\n  background-color: #3f464d;\n  opacity: 0;\n  transition: opacity 0.2s ease-in;\n  box-sizing: border-box;\n}\n._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF * {\n  height: 100%;\n  color: white;\n}\n.lOk_bQ5ETI2xqIC4fsbZb {\n  height: 96%;\n  position: relative;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  display: block;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb {\n  *zoom: 1;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after,\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after {\n  clear: both;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb > * {\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:focus {\n  outline: none!important;\n}\n.lOk_bQ5ETI2xqIC4fsbZb > video {\n  display: block;\n  height: 100%;\n  position: relative;\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._18Sa8VZSJYKHMqTYDjBrtN {\n  width: 100%;\n  height: 34px;\n  display: block;\n  float: left;\n  position: absolute;\n  bottom: 0;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF {\n  width: 100%;\n  height: 100%;\n  background-color: #3f464d;\n  opacity: 0;\n  transition: opacity 0.2s ease-in;\n  box-sizing: border-box;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._18Sa8VZSJYKHMqTYDjBrtN ._3XuSLxr7gy62pvRB64NyeF * {\n  height: 100%;\n  color: white;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:hover ._3XuSLxr7gy62pvRB64NyeF {\n  opacity: 0.9;\n}\n", ""]);
+	exports.push([module.id, "/*\n    MIXINS\n*/\n.LzEYcEk1aWXz-1MKq0M6t {\n  *zoom: 1;\n}\n.LzEYcEk1aWXz-1MKq0M6t:after,\n.LzEYcEk1aWXz-1MKq0M6t:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.LzEYcEk1aWXz-1MKq0M6t:after {\n  clear: both;\n}\n._3OBQG-2Zzwwzzt_Zg1t3Pe {\n  width: 100%;\n  height: 34px;\n  display: block;\n  float: left;\n  position: absolute;\n  bottom: 0;\n}\n._3OBQG-2Zzwwzzt_Zg1t3Pe ._1ACJ0H5aid2fCXeMfXlaeX {\n  width: 100%;\n  height: 100%;\n  background-color: #3f464d;\n  box-sizing: border-box;\n}\n._3OBQG-2Zzwwzzt_Zg1t3Pe ._2Wv8tDJCFTZbilEUfCWQj6 {\n  float: left;\n  margin-left: 7%;\n  width: 60px;\n  height: 100%;\n}\n._3OBQG-2Zzwwzzt_Zg1t3Pe ._1IgtVLO_qXmyoI_f9ztmPY {\n  width: 100%;\n  position: absolute;\n  margin-top: -17px;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
-		"clearfix": "_24PGfrGGkf54IkX6qrv-yI",
-		"container": "_18Sa8VZSJYKHMqTYDjBrtN",
-		"controlsField": "_3XuSLxr7gy62pvRB64NyeF",
-		"videoField": "lOk_bQ5ETI2xqIC4fsbZb",
-		"no-flexboxlegacy": "_1DUVdQlY9wJNSYemWPM3U_"
+		"clearfix": "LzEYcEk1aWXz-1MKq0M6t",
+		"container": "_3OBQG-2Zzwwzzt_Zg1t3Pe",
+		"controlsField": "_1ACJ0H5aid2fCXeMfXlaeX",
+		"inputRange": "_2Wv8tDJCFTZbilEUfCWQj6",
+		"progressbar": "_1IgtVLO_qXmyoI_f9ztmPY"
 	};
 
 /***/ },
@@ -22112,8 +22132,8 @@ webpackJsonp([0],[
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css", function() {
-				var newContent = require("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css");
+			module.hot.accept("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css", function() {
+				var newContent = require("!!./../../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -22131,10 +22151,15 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "* {\n  margin: 0px;\n  padding: 0px;\n}\nhtml,\nbody {\n  height: 100%;\n}\n", ""]);
+	exports.push([module.id, "/*\n    MIXINS\n*/\n._24PGfrGGkf54IkX6qrv-yI {\n  *zoom: 1;\n}\n._24PGfrGGkf54IkX6qrv-yI:after,\n._24PGfrGGkf54IkX6qrv-yI:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._24PGfrGGkf54IkX6qrv-yI:after {\n  clear: both;\n}\n.lOk_bQ5ETI2xqIC4fsbZb {\n  height: 96%;\n  position: relative;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  display: block;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb {\n  *zoom: 1;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after,\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after {\n  clear: both;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb > * {\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:focus {\n  outline: none!important;\n}\n.lOk_bQ5ETI2xqIC4fsbZb > video {\n  display: block;\n  height: 100%;\n  position: relative;\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._3XuSLxr7gy62pvRB64NyeF {\n  opacity: 0;\n  transition: opacity 0.2s ease-in;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:hover ._3XuSLxr7gy62pvRB64NyeF {\n  opacity: 0.9;\n}\n", ""]);
 	
 	// exports
-
+	exports.locals = {
+		"clearfix": "_24PGfrGGkf54IkX6qrv-yI",
+		"videoField": "lOk_bQ5ETI2xqIC4fsbZb",
+		"no-flexboxlegacy": "_1DUVdQlY9wJNSYemWPM3U_",
+		"controlsField": "_3XuSLxr7gy62pvRB64NyeF"
+	};
 
 /***/ },
 /* 262 */
@@ -22144,6 +22169,46 @@ webpackJsonp([0],[
 	
 	// load the styles
 	var content = __webpack_require__(263);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(221)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css", function() {
+				var newContent = require("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./index.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(220)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "* {\n  margin: 0px;\n  padding: 0px;\n}\nhtml,\nbody {\n  height: 100%;\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(265);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22163,7 +22228,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 263 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();

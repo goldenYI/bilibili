@@ -7,7 +7,9 @@ class Track extends React.Component {
 
         autobind([
             'handleMouseDown',
+            'handleMouseUp'
         ], this);
+
     }
     /**
     * Handle any mousedown event received by the component
@@ -22,10 +24,12 @@ class Track extends React.Component {
             x: clientX - trackClientRect.left,
             y: 0
         };
-
         this.props.onTrackMouseDown(event, this, position);
+        this.props.trackMoveStartEventListener();
     }
-
+    handleMouseUp(event) {
+        this.props.trackMoveEndEventListener();
+    }
     /**
     * Return the clientRect of the component
     * @member {ClientRect}
@@ -40,6 +44,7 @@ class Track extends React.Component {
         return(
             <div
                 onMouseDown={this.handleMouseDown}
+                onMouseUp={this.handleMouseUp}
                 ref="track"
                 className={styles.container}>
 
@@ -47,7 +52,8 @@ class Track extends React.Component {
                     className={styles.track}
                     style={{
                         width: this.props.positionValue + 'px',
-                        backgroundColor: this.props.trackChangeColor
+                        backgroundColor: this.props.trackChangeColor,
+                        ...this.props.style
                     }}></div>
                 <div
                     className={styles.backtrack}

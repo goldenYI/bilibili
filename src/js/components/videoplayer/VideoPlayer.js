@@ -19,7 +19,7 @@ class VideoPlayer extends React.Component {
                 <div className={styles.tempright}>
                     <div className={styles.playerField}>
                         <Video
-                            src='http://www.bilibilijj.com/FreeDown/DownLoad/1484151127/mp4/12994573.5CBA8A4588626537F875DCBB4D2088F5'
+                            src='http://www.bilibilijj.com/FreeDown/DownLoad/1484575494/mp4/12994573.3E58501038C1E6A5A96BEE33471964A1'
                             controls autoPlay loop muted>
                         </Video>
                     </div>

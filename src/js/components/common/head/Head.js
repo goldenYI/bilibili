@@ -17,7 +17,7 @@ class CommonHead extends React.Component {
     componentDidMount() {}
     componentWillUnmount() {}
     onClickSubmit() {
-        console.log(123);
+    
     }
     render() {
         return(

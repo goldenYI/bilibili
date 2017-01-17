@@ -12,14 +12,18 @@ class InputRange extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 0,
+            value: this.props.defaultValue * (this.trackClientRect().width / (this.props.maxValue - this.props.minValue)),
         }
         // auto bind function
         autobind([
             'handleSliderMouseMove',
             'handleTrackMouseDown',
-            'updatePosition'
+            'updatePosition',
+            'componentDidMount',
+            'trackMoveStartEventListener',
+            'trackMoveEndEventListener'
         ],this);
+
     }
     componentDidMount() {
         // update default value
@@ -71,22 +75,25 @@ class InputRange extends React.Component {
         }
         return {height: 0, left: 0, top: 0, width: 0};
     }
-
-    /**
-    * Get an array of slider HTML for rendering
-    * @return {Array.<string>} Array of HTML
-    */
-    renderSlider() {
-        const slider = (
-            <Slider
-                onSliderMouseMove={this.handleSliderMouseMove}
-                />
-        );
+    trackMoveStartEventListener() {
+        const {slider} = this.refs;
+        if (slider) {
+            slider.handleMouseDown();
+        }
+    }
+    trackMoveEndEventListener() {
+        const {slider} = this.refs;
+        if (slider) {
+            slider.handleMouseUp();
+        }
     }
     render() {
         return (
             <div className={cs(styles.container, this.props.className)}>
                 <Track
+                    trackMoveStartEventListener={this.trackMoveStartEventListener}
+                    trackMoveEndEventListener={this.trackMoveEndEventListener}
+                    style={this.props.trackStyles}
                     trackBackColor={this.props.trackBackColor}
                     trackChangeColor={this.props.trackChangeColor}
                     orient={this.props.orient}
@@ -94,6 +101,7 @@ class InputRange extends React.Component {
                     positionValue={this.state.value}
                     onTrackMouseDown={this.handleTrackMouseDown}>
                     <Slider
+                        ref='slider'
                         labelDisable={this.props.labelDisable}
                         buttonStyles={this.props.buttonStyles}
                         orient={this.props.orient}
@@ -120,6 +128,7 @@ InputRange.defaultProps = {
     buttonwidth: '15px',
     buttonColor: 'black',
     buttonStyles: null,
+    trackStyles: null,
     labelDisable: false,
     trackBackColor: '#eeeeee',
     trackChangeColor: '#e03d3d',

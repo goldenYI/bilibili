@@ -13,12 +13,8 @@ class Slider extends React.Component {
             'handleMouseMove',
         ], this);
     }
-    /**
-     * label value update
-     * @param {ref} ref - Label's ref
-     */
-    outputUpdate() {
-        this.refs.volume.value = this.refs.fader.value;
+    componentDidMount() {
+
     }
     /**
     * Handle any click event received by the component
@@ -67,7 +63,7 @@ class Slider extends React.Component {
                 style={{
                     left:this.props.positionValue+'px',
                     position: 'absolute',
-                    marginLeft: '-' + this.props.buttonwidth,
+                    marginLeft: '-' + (this.props.buttonwidth/2) + 'px',
                     width:this.props.buttonwidth,
                     height:this.props.buttonheight
                 }}>
@@ -85,18 +81,8 @@ class Slider extends React.Component {
                         width:this.props.buttonwidth,
                         height:this.props.buttonheight,
                     }}
-                    type="range"
-                    id="fader"
-                    ref="fader"
-                    min="1"
-                    max="100"
-                    step="1"
-                    aria-valuemin="1"
-                    aria-valuemax="100"
-                    aria-valuenow="20"
                     onClick={this.handleClick}
                     onMouseDown={this.handleMouseDown}/>
-
             </span>
         );
     }
