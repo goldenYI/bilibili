@@ -2,7 +2,7 @@
 
 import React from 'react';
 import CommonHead from 'components/common/head/Head.js';
-import VideoPlayer from 'components/videoplayer/VideoPlayer.js';
+import VideoPage from 'containers/VideoPage.js';
 
 import 'style/common/index.css'
 import styles from 'style/containers/app.css'
@@ -23,7 +23,7 @@ class App extends React.Component {
         return(
             <div className={styles.container} >
                 <div className={styles.apphead} ><CommonHead /></div>
-                <div className={styles.appbody} ><VideoPlayer /></div>
+                <VideoPage />
 
 
             </div>

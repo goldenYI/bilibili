@@ -14,8 +14,10 @@
   clear: both;
 }
 .videoField {
-  height: 96%;
+  width: 960px;
+  height: 540px;
   position: relative;
+  background-color: black;
   display: -ms-flexbox;
   display: flex;
   -ms-box-orient: horizontal;
@@ -51,6 +53,7 @@
 .videoField > video {
   display: block;
   height: 100%;
+  width: 100%;
   position: relative;
   float: left;
 }

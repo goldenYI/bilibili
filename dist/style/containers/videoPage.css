@@ -1,0 +1,99 @@
+/*
+    MIXINS
+*/
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after,
+.clearfix:before {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.container {
+  margin-top: 4px;
+  -ms-flex: 1;
+  flex: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-box-pack: start;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+}
+.no-flexbox .container {
+  width: 100%;
+}
+.no-flexboxlegacy .container {
+  *zoom: 1;
+}
+.no-flexboxlegacy .container:after,
+.no-flexboxlegacy .container:before {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.no-flexboxlegacy .container:after {
+  clear: both;
+}
+.no-flexboxlegacy .container > * {
+  float: left;
+}
+.container .templeft {
+  -ms-flex: 1;
+  flex: 1;
+  -ms-flex-order: 1;
+  order: 1;
+  background-color: #f7f8fa;
+}
+.no-flexbox .container .templeft {
+  width: 20%;
+}
+.container .tempright {
+  -ms-flex: 4;
+  flex: 4;
+  -ms-flex-order: 2;
+  order: 2;
+}
+.no-flexbox .container .tempright {
+  width: 80%;
+}
+.container .tempright > p {
+  margin: 50px;
+  font-size: 1.5em;
+}
+.container .playerField {
+  height: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-box-pack: start;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+.no-flexboxlegacy .container .playerField {
+  *zoom: 1;
+}
+.no-flexboxlegacy .container .playerField:after,
+.no-flexboxlegacy .container .playerField:before {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.no-flexboxlegacy .container .playerField:after {
+  clear: both;
+}
+.no-flexboxlegacy .container .playerField > * {
+  float: left;
+}

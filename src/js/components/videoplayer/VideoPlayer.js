@@ -14,18 +14,10 @@ class VideoPlayer extends React.Component {
 
     render() {
         return(
-            <div className={styles.container} >
-                <div className={styles.templeft}></div>
-                <div className={styles.tempright}>
-                    <div className={styles.playerField}>
-                        <Video
-                            src='http://www.bilibilijj.com/FreeDown/DownLoad/1484575494/mp4/12994573.3E58501038C1E6A5A96BEE33471964A1'
-                            controls autoPlay loop muted>
-                        </Video>
-                    </div>
-                </div>
-            </div>
-
+            <Video
+                src={this.props.src}
+                controls autoPlay loop muted>
+            </Video>
         );
     }
 }

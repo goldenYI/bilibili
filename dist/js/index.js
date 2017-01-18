@@ -2444,13 +2444,13 @@ webpackJsonp([0],[
 	
 	var _Head2 = _interopRequireDefault(_Head);
 	
-	var _VideoPlayer = __webpack_require__(228);
+	var _VideoPage = __webpack_require__(228);
 	
-	var _VideoPlayer2 = _interopRequireDefault(_VideoPlayer);
+	var _VideoPage2 = _interopRequireDefault(_VideoPage);
 	
-	__webpack_require__(262);
+	__webpack_require__(265);
 	
-	var _app = __webpack_require__(264);
+	var _app = __webpack_require__(267);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
@@ -2497,11 +2497,7 @@ webpackJsonp([0],[
 	                    { className: _app2.default.apphead },
 	                    _react2.default.createElement(_Head2.default, null)
 	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: _app2.default.appbody },
-	                    _react2.default.createElement(_VideoPlayer2.default, null)
-	                )
+	                _react2.default.createElement(_VideoPage2.default, null)
 	            );
 	        }
 	    }]);
@@ -3051,11 +3047,82 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _index = __webpack_require__(229);
+	var _VideoPlayer = __webpack_require__(229);
+	
+	var _VideoPlayer2 = _interopRequireDefault(_VideoPlayer);
+	
+	var _videoPage = __webpack_require__(263);
+	
+	var _videoPage2 = _interopRequireDefault(_videoPage);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var VideoPage = function (_React$Component) {
+	    _inherits(VideoPage, _React$Component);
+	
+	    function VideoPage(props) {
+	        _classCallCheck(this, VideoPage);
+	
+	        return _possibleConstructorReturn(this, (VideoPage.__proto__ || Object.getPrototypeOf(VideoPage)).call(this, props));
+	    }
+	
+	    _createClass(VideoPage, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: _videoPage2.default.container },
+	                _react2.default.createElement('div', { className: _videoPage2.default.templeft }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: _videoPage2.default.tempright },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: _videoPage2.default.playerField },
+	                        _react2.default.createElement(_VideoPlayer2.default, { src: 'http://www.bilibilijj.com/FreeDown/DownLoad/1484744830/mp4/12994573.2F2E74C00AC9084A84F59763A30C95C3' })
+	                    ),
+	                    _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        'Brandy - I Wanna Be Down (Grades Remix)'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return VideoPage;
+	}(_react2.default.Component);
+	
+	exports.default = VideoPage;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _index = __webpack_require__(230);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _Video = __webpack_require__(231);
+	var _Video = __webpack_require__(232);
 	
 	var _Video2 = _interopRequireDefault(_Video);
 	
@@ -3079,22 +3146,9 @@ webpackJsonp([0],[
 	    _createClass(VideoPlayer, [{
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: _index2.default.container },
-	                _react2.default.createElement('div', { className: _index2.default.templeft }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: _index2.default.tempright },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: _index2.default.playerField },
-	                        _react2.default.createElement(_Video2.default, {
-	                            src: 'http://www.bilibilijj.com/FreeDown/DownLoad/1484575494/mp4/12994573.3E58501038C1E6A5A96BEE33471964A1',
-	                            controls: true, autoPlay: true, loop: true, muted: true })
-	                    )
-	                )
-	            );
+	            return _react2.default.createElement(_Video2.default, {
+	                src: this.props.src,
+	                controls: true, autoPlay: true, loop: true, muted: true });
 	        }
 	    }]);
 	
@@ -3104,13 +3158,13 @@ webpackJsonp([0],[
 	exports.default = VideoPlayer;
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(230);
+	var content = __webpack_require__(231);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -3130,7 +3184,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -3138,21 +3192,17 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "/*\n    MIXINS\n*/\n.jycYtZaPOhQAZEgHlEaKX {\n  *zoom: 1;\n}\n.jycYtZaPOhQAZEgHlEaKX:after,\n.jycYtZaPOhQAZEgHlEaKX:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.jycYtZaPOhQAZEgHlEaKX:after {\n  clear: both;\n}\n._3pl3H08Z1ZPU3tv16-rgQI {\n  -ms-flex: 1;\n  flex: 1;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n._2bHFPL7-CIUBAEmkKkwun2 ._3pl3H08Z1ZPU3tv16-rgQI {\n  width: 100%;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI {\n  *zoom: 1;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI:after,\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI:after {\n  clear: both;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI > * {\n  float: left;\n}\n._3pl3H08Z1ZPU3tv16-rgQI .DNODovN99Z_FbkFFpS8BI {\n  -ms-flex: 1;\n  flex: 1;\n  -ms-flex-order: 1;\n  order: 1;\n}\n._2bHFPL7-CIUBAEmkKkwun2 ._3pl3H08Z1ZPU3tv16-rgQI .DNODovN99Z_FbkFFpS8BI {\n  width: 20%;\n}\n._3pl3H08Z1ZPU3tv16-rgQI ._3vwAgtQ86IWMDW-oVnAsvB {\n  -ms-flex: 4;\n  flex: 4;\n  -ms-flex-order: 2;\n  order: 2;\n}\n._2bHFPL7-CIUBAEmkKkwun2 ._3pl3H08Z1ZPU3tv16-rgQI ._3vwAgtQ86IWMDW-oVnAsvB {\n  width: 80%;\n}\n._3pl3H08Z1ZPU3tv16-rgQI {\n  margin-top: 4px;\n}\n._3pl3H08Z1ZPU3tv16-rgQI ._2PlohyO8eRJQnn3NiN4o4L {\n  height: 60%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI ._2PlohyO8eRJQnn3NiN4o4L {\n  *zoom: 1;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI ._2PlohyO8eRJQnn3NiN4o4L:after,\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI ._2PlohyO8eRJQnn3NiN4o4L:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI ._2PlohyO8eRJQnn3NiN4o4L:after {\n  clear: both;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI ._2PlohyO8eRJQnn3NiN4o4L > * {\n  float: left;\n}\n.DNODovN99Z_FbkFFpS8BI {\n  background-color: #f7f8fa;\n}\n", ""]);
+	exports.push([module.id, "/*\n    MIXINS\n*/\n.jycYtZaPOhQAZEgHlEaKX {\n  *zoom: 1;\n}\n.jycYtZaPOhQAZEgHlEaKX:after,\n.jycYtZaPOhQAZEgHlEaKX:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.jycYtZaPOhQAZEgHlEaKX:after {\n  clear: both;\n}\n._3pl3H08Z1ZPU3tv16-rgQI {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI {\n  *zoom: 1;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI:after,\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI:after {\n  clear: both;\n}\n.ZoT94wA_Q5BkmFNZmLpSO ._3pl3H08Z1ZPU3tv16-rgQI > * {\n  float: left;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
 		"clearfix": "jycYtZaPOhQAZEgHlEaKX",
 		"container": "_3pl3H08Z1ZPU3tv16-rgQI",
-		"no-flexbox": "_2bHFPL7-CIUBAEmkKkwun2",
-		"no-flexboxlegacy": "ZoT94wA_Q5BkmFNZmLpSO",
-		"templeft": "DNODovN99Z_FbkFFpS8BI",
-		"tempright": "_3vwAgtQ86IWMDW-oVnAsvB",
-		"playerField": "_2PlohyO8eRJQnn3NiN4o4L"
+		"no-flexboxlegacy": "ZoT94wA_Q5BkmFNZmLpSO"
 	};
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3168,19 +3218,19 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Controls = __webpack_require__(232);
+	var _Controls = __webpack_require__(233);
 	
 	var _Controls2 = _interopRequireDefault(_Controls);
 	
-	var _lodash = __webpack_require__(247);
+	var _lodash = __webpack_require__(248);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _Overlay = __webpack_require__(257);
+	var _Overlay = __webpack_require__(258);
 	
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 	
-	var _index = __webpack_require__(260);
+	var _index = __webpack_require__(261);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -3638,7 +3688,7 @@ webpackJsonp([0],[
 	exports.Overlay = _Overlay2.default;
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3653,23 +3703,23 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(233);
+	var _classnames = __webpack_require__(234);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _VideoPlayButton = __webpack_require__(234);
+	var _VideoPlayButton = __webpack_require__(235);
 	
 	var _VideoPlayButton2 = _interopRequireDefault(_VideoPlayButton);
 	
-	var _ProgressBar = __webpack_require__(237);
+	var _ProgressBar = __webpack_require__(238);
 	
 	var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 	
-	var _InputRange = __webpack_require__(238);
+	var _InputRange = __webpack_require__(239);
 	
 	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
-	var _index = __webpack_require__(255);
+	var _index = __webpack_require__(256);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -3745,7 +3795,7 @@ webpackJsonp([0],[
 	exports.default = Controls;
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -3799,7 +3849,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3818,7 +3868,7 @@ webpackJsonp([0],[
 	
 	var _assets2 = _interopRequireDefault(_assets);
 	
-	var _play_button = __webpack_require__(235);
+	var _play_button = __webpack_require__(236);
 	
 	var _play_button2 = _interopRequireDefault(_play_button);
 	
@@ -3876,13 +3926,13 @@ webpackJsonp([0],[
 	exports.default = VideoPlayButton;
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(236);
+	var content = __webpack_require__(237);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -3902,7 +3952,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -3920,7 +3970,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3935,15 +3985,15 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _InputRange = __webpack_require__(238);
+	var _InputRange = __webpack_require__(239);
 	
 	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
-	var _progressbar = __webpack_require__(253);
+	var _progressbar = __webpack_require__(254);
 	
 	var _progressbar2 = _interopRequireDefault(_progressbar);
 	
-	var _util = __webpack_require__(240);
+	var _util = __webpack_require__(241);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -4029,7 +4079,7 @@ webpackJsonp([0],[
 	exports.default = ProgressBar;
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4040,7 +4090,7 @@ webpackJsonp([0],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _classnames = __webpack_require__(233);
+	var _classnames = __webpack_require__(234);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -4048,21 +4098,21 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Slider = __webpack_require__(239);
+	var _Slider = __webpack_require__(240);
 	
 	var _Slider2 = _interopRequireDefault(_Slider);
 	
-	var _valueTransformer = __webpack_require__(246);
+	var _valueTransformer = __webpack_require__(247);
 	
 	var _valueTransformer2 = _interopRequireDefault(_valueTransformer);
 	
-	var _Track = __webpack_require__(248);
+	var _Track = __webpack_require__(249);
 	
 	var _Track2 = _interopRequireDefault(_Track);
 	
-	var _util = __webpack_require__(240);
+	var _util = __webpack_require__(241);
 	
-	var _InputRange = __webpack_require__(251);
+	var _InputRange = __webpack_require__(252);
 	
 	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
@@ -4235,7 +4285,7 @@ webpackJsonp([0],[
 	exports.default = InputRange;
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4252,13 +4302,13 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _util = __webpack_require__(240);
+	var _util = __webpack_require__(241);
 	
-	var _Label = __webpack_require__(241);
+	var _Label = __webpack_require__(242);
 	
 	var _Label2 = _interopRequireDefault(_Label);
 	
-	var _Slider = __webpack_require__(244);
+	var _Slider = __webpack_require__(245);
 	
 	var _Slider2 = _interopRequireDefault(_Slider);
 	
@@ -4377,7 +4427,7 @@ webpackJsonp([0],[
 	exports.default = Slider;
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -4399,7 +4449,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4416,7 +4466,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Label = __webpack_require__(242);
+	var _Label = __webpack_require__(243);
 	
 	var _Label2 = _interopRequireDefault(_Label);
 	
@@ -4456,13 +4506,13 @@ webpackJsonp([0],[
 	exports.default = Label;
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(243);
+	var content = __webpack_require__(244);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -4482,7 +4532,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -4498,13 +4548,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(245);
+	var content = __webpack_require__(246);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -4524,7 +4574,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -4541,7 +4591,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4550,7 +4600,7 @@ webpackJsonp([0],[
 	    value: true
 	});
 	
-	var _lodash = __webpack_require__(247);
+	var _lodash = __webpack_require__(248);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -4630,7 +4680,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -21721,7 +21771,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(192)(module)))
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21738,9 +21788,9 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _util = __webpack_require__(240);
+	var _util = __webpack_require__(241);
 	
-	var _Track = __webpack_require__(249);
+	var _Track = __webpack_require__(250);
 	
 	var _Track2 = _interopRequireDefault(_Track);
 	
@@ -21833,13 +21883,13 @@ webpackJsonp([0],[
 	exports.default = Track;
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(250);
+	var content = __webpack_require__(251);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -21859,7 +21909,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -21880,13 +21930,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(252);
+	var content = __webpack_require__(253);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -21906,7 +21956,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -21922,13 +21972,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(254);
+	var content = __webpack_require__(255);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -21948,7 +21998,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -21964,13 +22014,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(256);
+	var content = __webpack_require__(257);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -21990,7 +22040,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22010,7 +22060,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22025,7 +22075,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _overlay = __webpack_require__(258);
+	var _overlay = __webpack_require__(259);
 	
 	var _overlay2 = _interopRequireDefault(_overlay);
 	
@@ -22072,13 +22122,13 @@ webpackJsonp([0],[
 	exports.default = Overlay;
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(259);
+	var content = __webpack_require__(260);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22098,7 +22148,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22117,13 +22167,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(261);
+	var content = __webpack_require__(262);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22143,7 +22193,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22151,7 +22201,7 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "/*\n    MIXINS\n*/\n._24PGfrGGkf54IkX6qrv-yI {\n  *zoom: 1;\n}\n._24PGfrGGkf54IkX6qrv-yI:after,\n._24PGfrGGkf54IkX6qrv-yI:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._24PGfrGGkf54IkX6qrv-yI:after {\n  clear: both;\n}\n.lOk_bQ5ETI2xqIC4fsbZb {\n  height: 96%;\n  position: relative;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  display: block;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb {\n  *zoom: 1;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after,\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after {\n  clear: both;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb > * {\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:focus {\n  outline: none!important;\n}\n.lOk_bQ5ETI2xqIC4fsbZb > video {\n  display: block;\n  height: 100%;\n  position: relative;\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._3XuSLxr7gy62pvRB64NyeF {\n  opacity: 0;\n  transition: opacity 0.2s ease-in;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:hover ._3XuSLxr7gy62pvRB64NyeF {\n  opacity: 0.9;\n}\n", ""]);
+	exports.push([module.id, "/*\n    MIXINS\n*/\n._24PGfrGGkf54IkX6qrv-yI {\n  *zoom: 1;\n}\n._24PGfrGGkf54IkX6qrv-yI:after,\n._24PGfrGGkf54IkX6qrv-yI:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._24PGfrGGkf54IkX6qrv-yI:after {\n  clear: both;\n}\n.lOk_bQ5ETI2xqIC4fsbZb {\n  width: 960px;\n  height: 540px;\n  position: relative;\n  background-color: black;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  display: block;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb {\n  *zoom: 1;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after,\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb:after {\n  clear: both;\n}\n._1DUVdQlY9wJNSYemWPM3U_ .lOk_bQ5ETI2xqIC4fsbZb > * {\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:focus {\n  outline: none!important;\n}\n.lOk_bQ5ETI2xqIC4fsbZb > video {\n  display: block;\n  height: 100%;\n  width: 100%;\n  position: relative;\n  float: left;\n}\n.lOk_bQ5ETI2xqIC4fsbZb ._3XuSLxr7gy62pvRB64NyeF {\n  opacity: 0;\n  transition: opacity 0.2s ease-in;\n}\n.lOk_bQ5ETI2xqIC4fsbZb:hover ._3XuSLxr7gy62pvRB64NyeF {\n  opacity: 0.9;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
@@ -22162,13 +22212,61 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(263);
+	var content = __webpack_require__(264);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(221)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./videoPage.css", function() {
+				var newContent = require("!!./../../../node_modules/.0.26.1@css-loader/index.js?modules&root=./dist!./videoPage.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(220)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "/*\n    MIXINS\n*/\n._3DGH9JKhQuVb8x4atLF-2p {\n  *zoom: 1;\n}\n._3DGH9JKhQuVb8x4atLF-2p:after,\n._3DGH9JKhQuVb8x4atLF-2p:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._3DGH9JKhQuVb8x4atLF-2p:after {\n  clear: both;\n}\n._2VLsatrBBnzlMfFqYuX0Fg {\n  margin-top: 4px;\n  -ms-flex: 1;\n  flex: 1;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n.HUoh93B4zZlE9jP8xMnov ._2VLsatrBBnzlMfFqYuX0Fg {\n  width: 100%;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg {\n  *zoom: 1;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg:after,\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg:after {\n  clear: both;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg > * {\n  float: left;\n}\n._2VLsatrBBnzlMfFqYuX0Fg .uBvzUzyA3T_e2xctf6CfA {\n  -ms-flex: 1;\n  flex: 1;\n  -ms-flex-order: 1;\n  order: 1;\n  background-color: #f7f8fa;\n}\n.HUoh93B4zZlE9jP8xMnov ._2VLsatrBBnzlMfFqYuX0Fg .uBvzUzyA3T_e2xctf6CfA {\n  width: 20%;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 {\n  -ms-flex: 4;\n  flex: 4;\n  -ms-flex-order: 2;\n  order: 2;\n}\n.HUoh93B4zZlE9jP8xMnov ._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 {\n  width: 80%;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 > p {\n  margin: 50px;\n  font-size: 1.5em;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl {\n  height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl {\n  *zoom: 1;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl:after,\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl:after {\n  clear: both;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl > * {\n  float: left;\n}\n", ""]);
+	
+	// exports
+	exports.locals = {
+		"clearfix": "_3DGH9JKhQuVb8x4atLF-2p",
+		"container": "_2VLsatrBBnzlMfFqYuX0Fg",
+		"no-flexbox": "HUoh93B4zZlE9jP8xMnov",
+		"no-flexboxlegacy": "_3GBrHOHFCMGFK0KiILoR5N",
+		"templeft": "uBvzUzyA3T_e2xctf6CfA",
+		"tempright": "_3B_nQNvG-idvM-XdE8LeU8",
+		"playerField": "_2K60a0Mrzuq_N5kQx9Mzkl"
+	};
+
+/***/ },
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(266);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22188,7 +22286,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 263 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22202,13 +22300,13 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 264 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(265);
+	var content = __webpack_require__(268);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22228,7 +22326,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 265 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22236,7 +22334,7 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "/*\n    MIXINS\n*/\n.x_Pa9TtZvqBljFDuuNYex {\n  *zoom: 1;\n}\n.x_Pa9TtZvqBljFDuuNYex:after,\n.x_Pa9TtZvqBljFDuuNYex:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.x_Pa9TtZvqBljFDuuNYex:after {\n  clear: both;\n}\n._37cHMh1RC1nGmwoAgdy92w {\n  height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: vertical;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w {\n  *zoom: 1;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:after,\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:after {\n  clear: both;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w > * {\n  float: left;\n}\n._37cHMh1RC1nGmwoAgdy92w ._2u-iuw63__lVCieZHsKyTX {\n  -ms-flex: 0;\n  flex: 0;\n}\n._2eXWVnZxQcir6kUAX2olrc ._37cHMh1RC1nGmwoAgdy92w ._2u-iuw63__lVCieZHsKyTX {\n  width: NaN%;\n}\n._37cHMh1RC1nGmwoAgdy92w ._1qqwX2OdD7LhwJj5b9b4sJ {\n  -ms-flex: 1;\n  flex: 1;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n._2eXWVnZxQcir6kUAX2olrc ._37cHMh1RC1nGmwoAgdy92w ._1qqwX2OdD7LhwJj5b9b4sJ {\n  width: 100%;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w ._1qqwX2OdD7LhwJj5b9b4sJ {\n  *zoom: 1;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w ._1qqwX2OdD7LhwJj5b9b4sJ:after,\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w ._1qqwX2OdD7LhwJj5b9b4sJ:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w ._1qqwX2OdD7LhwJj5b9b4sJ:after {\n  clear: both;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w ._1qqwX2OdD7LhwJj5b9b4sJ > * {\n  float: left;\n}\n", ""]);
+	exports.push([module.id, "/*\n    MIXINS\n*/\n.x_Pa9TtZvqBljFDuuNYex {\n  *zoom: 1;\n}\n.x_Pa9TtZvqBljFDuuNYex:after,\n.x_Pa9TtZvqBljFDuuNYex:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.x_Pa9TtZvqBljFDuuNYex:after {\n  clear: both;\n}\n._37cHMh1RC1nGmwoAgdy92w {\n  height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: vertical;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w {\n  *zoom: 1;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:after,\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:after {\n  clear: both;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w > * {\n  float: left;\n}\n._37cHMh1RC1nGmwoAgdy92w ._2u-iuw63__lVCieZHsKyTX {\n  -ms-flex: 0;\n  flex: 0;\n}\n._2eXWVnZxQcir6kUAX2olrc ._37cHMh1RC1nGmwoAgdy92w ._2u-iuw63__lVCieZHsKyTX {\n  width: NaN%;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
@@ -22244,8 +22342,7 @@ webpackJsonp([0],[
 		"container": "_37cHMh1RC1nGmwoAgdy92w",
 		"no-flexboxlegacy": "_2Mpg8IIw6Cauj6c7FXN6_-",
 		"apphead": "_2u-iuw63__lVCieZHsKyTX",
-		"no-flexbox": "_2eXWVnZxQcir6kUAX2olrc",
-		"appbody": "_1qqwX2OdD7LhwJj5b9b4sJ"
+		"no-flexbox": "_2eXWVnZxQcir6kUAX2olrc"
 	};
 
 /***/ }

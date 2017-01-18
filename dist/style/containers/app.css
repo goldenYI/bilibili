@@ -46,33 +46,3 @@
 .no-flexbox .container .apphead {
   width: NaN%;
 }
-.container .appbody {
-  -ms-flex: 1;
-  flex: 1;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-box-orient: horizontal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-box-pack: start;
-  -ms-flex-pack: start;
-      justify-content: flex-start;
-}
-.no-flexbox .container .appbody {
-  width: 100%;
-}
-.no-flexboxlegacy .container .appbody {
-  *zoom: 1;
-}
-.no-flexboxlegacy .container .appbody:after,
-.no-flexboxlegacy .container .appbody:before {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.no-flexboxlegacy .container .appbody:after {
-  clear: both;
-}
-.no-flexboxlegacy .container .appbody > * {
-  float: left;
-}
