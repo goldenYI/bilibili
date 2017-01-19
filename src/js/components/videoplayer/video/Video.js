@@ -75,7 +75,7 @@ class Video extends React.Component {
      */
     componentDidMount() {
         // Listen to error of last source.
-        this.videoEl.children[this.videoEl.children.length - 1].addEventListener('error', this._updateStateFromVideo);
+        //this.videoEl.children[this.videoEl.children.length - 1].addEventListener('error', this._updateStateFromVideo);
     }
 
     /**

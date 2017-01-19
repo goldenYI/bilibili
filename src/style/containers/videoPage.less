@@ -4,25 +4,80 @@
     margin-top: 4px;
     .flex(1,1);
     .flexbox();
+
     .templeft {
         .flex(1,5);
         .order(1);
         background-color: #f7f8fa;
     }
+
     .tempright {
         .flex(4,5);
         .order(2);
-        > p {
-            margin: 50px;
-            font-size: 1.5em;
+
+        .videoInfo {
+            margin: 30px;
+
+            .head {
+                width: 100%;
+                &:after {
+                    content: ".";
+                    display: block;
+                    height: 0;
+                    clear: both;
+                    visibility: hidden;
+                }
+                .title {
+                    float: left;
+                }
+
+                .videocount {
+                    color: #aaaaaa;
+                    float: right;
+                    letter-spacing: 2px;
+                }
+
+                > * {
+                    font-family: "Helvetica Neue", san-serif;
+                    font-size: 1.6em;
+                }
+            }
+
+            .videouserinfo {
+                margin-top: 30px;
+                width: 100%;
+                height: 40px;
+
+                > img {
+                    float: left;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+                .username {
+                    font-family: "Helvetica Neue", san-serif;
+                    font-size: 1.2em;
+                    color: #aaaaaa;
+                    letter-spacing: 1px;
+                    margin-left: 25px;
+                    line-height: 40px;
+                    float: left;
+                }
+            }
+            .videoshare {
+                * > {
+                    list-style: none;
+                }
+            }
         }
     }
+
     .playerField {
-        
+        z-index: 10;
+        transition: margin-top 0.4s ease-in;
         height: 100%;
         .flexbox();
         align-items: center;
         justify-content: center;
-
     }
 }

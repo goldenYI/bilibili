@@ -63,11 +63,57 @@
 .no-flexbox .container .tempright {
   width: 80%;
 }
-.container .tempright > p {
-  margin: 50px;
-  font-size: 1.5em;
+.container .tempright .videoInfo {
+  margin: 30px;
+}
+.container .tempright .videoInfo .head {
+  width: 100%;
+}
+.container .tempright .videoInfo .head:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.container .tempright .videoInfo .head .title {
+  float: left;
+}
+.container .tempright .videoInfo .head .videocount {
+  color: #aaaaaa;
+  float: right;
+  letter-spacing: 2px;
+}
+.container .tempright .videoInfo .head > * {
+  font-family: "Helvetica Neue", san-serif;
+  font-size: 1.6em;
+}
+.container .tempright .videoInfo .videouserinfo {
+  margin-top: 30px;
+  width: 100%;
+  height: 40px;
+}
+.container .tempright .videoInfo .videouserinfo > img {
+  float: left;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.container .tempright .videoInfo .videouserinfo .username {
+  font-family: "Helvetica Neue", san-serif;
+  font-size: 1.2em;
+  color: #aaaaaa;
+  letter-spacing: 1px;
+  margin-left: 25px;
+  line-height: 40px;
+  float: left;
+}
+.container .tempright .videoInfo .videoshare * {
+  list-style: none;
 }
 .container .playerField {
+  z-index: 10;
+  transition: margin-top 0.4s ease-in;
   height: 100%;
   display: -ms-flexbox;
   display: flex;

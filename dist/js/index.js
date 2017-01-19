@@ -3051,9 +3051,19 @@ webpackJsonp([0],[
 	
 	var _VideoPlayer2 = _interopRequireDefault(_VideoPlayer);
 	
+	var _util = __webpack_require__(241);
+	
+	var _classnames = __webpack_require__(234);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var _videoPage = __webpack_require__(263);
 	
 	var _videoPage2 = _interopRequireDefault(_videoPage);
+	
+	var _assets = __webpack_require__(222);
+	
+	var _assets2 = _interopRequireDefault(_assets);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -3069,31 +3079,129 @@ webpackJsonp([0],[
 	    function VideoPage(props) {
 	        _classCallCheck(this, VideoPage);
 	
-	        return _possibleConstructorReturn(this, (VideoPage.__proto__ || Object.getPrototypeOf(VideoPage)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (VideoPage.__proto__ || Object.getPrototypeOf(VideoPage)).call(this, props));
+	
+	        _this.state = {
+	            marginTop: 0,
+	            isWheelChange: false
+	        };
+	        (0, _util.autobind)(['handleWheel'], _this);
+	        return _this;
 	    }
+	    /**
+	    * Return the clientRect of the component
+	    * @member {ClientRect}
+	    */
+	
 	
 	    _createClass(VideoPage, [{
+	        key: 'handleWheel',
+	        value: function handleWheel(event) {
+	
+	            if (event.deltaY > 0 && !this.state.isWheelChange) {
+	                this.setState({
+	                    marginTop: -this.clientRect.height,
+	                    isWheelChange: true
+	                });
+	            }
+	            if (event.deltaY < 0 && this.state.isWheelChange) {
+	                this.setState({
+	                    marginTop: 0,
+	                    isWheelChange: false
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'numberFormat',
+	        value: function numberFormat(number) {
+	            return number.toString().replace(/\d(?=(?:\d{3})+\b)/g, '$&,');
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { className: _videoPage2.default.container },
+	                {
+	                    onWheel: this.handleWheel,
+	                    className: _videoPage2.default.container },
 	                _react2.default.createElement('div', { className: _videoPage2.default.templeft }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: _videoPage2.default.tempright },
+	                    {
+	                        ref: 'rightContainer',
+	                        className: _videoPage2.default.tempright },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: _videoPage2.default.playerField },
+	                        {
+	                            style: { marginTop: this.state.marginTop },
+	                            className: _videoPage2.default.playerField },
 	                        _react2.default.createElement(_VideoPlayer2.default, { src: 'http://www.bilibilijj.com/FreeDown/DownLoad/1484744830/mp4/12994573.2F2E74C00AC9084A84F59763A30C95C3' })
 	                    ),
 	                    _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        'Brandy - I Wanna Be Down (Grades Remix)'
+	                        'div',
+	                        { className: _videoPage2.default.videoInfo },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: _videoPage2.default.head },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: _videoPage2.default.title },
+	                                'Brandy - I Wanna Be Down (Grades Remix)'
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: _videoPage2.default.videocount },
+	                                this.numberFormat(9832471)
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: _videoPage2.default.videouserinfo },
+	                            _react2.default.createElement('img', { className: _videoPage2.default.userImg, src: _assets2.default.logo }),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: _videoPage2.default.username },
+	                                'Casual'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: _videoPage2.default.videoshare },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: _videoPage2.default.selectbutton },
+	                                _react2.default.createElement(
+	                                    'ul',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        'About'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        'Share'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        'More'
+	                                    )
+	                                )
+	                            )
+	                        )
 	                    )
 	                )
 	            );
+	        }
+	    }, {
+	        key: 'clientRect',
+	        get: function get() {
+	            var rightContainer = this.refs.rightContainer;
+	
+	            var clientRect = rightContainer.getBoundingClientRect();
+	            return clientRect;
 	        }
 	    }]);
 	
@@ -3304,10 +3412,10 @@ webpackJsonp([0],[
 	
 	    }, {
 	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            // Listen to error of last source.
-	            this.videoEl.children[this.videoEl.children.length - 1].addEventListener('error', this._updateStateFromVideo);
-	        }
+	        value: function componentDidMount() {}
+	        // Listen to error of last source.
+	        //this.videoEl.children[this.videoEl.children.length - 1].addEventListener('error', this._updateStateFromVideo);
+	
 	
 	        /**
 	         * Removes event listeners bound outside of React's synthetic events
@@ -22246,7 +22354,7 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "/*\n    MIXINS\n*/\n._3DGH9JKhQuVb8x4atLF-2p {\n  *zoom: 1;\n}\n._3DGH9JKhQuVb8x4atLF-2p:after,\n._3DGH9JKhQuVb8x4atLF-2p:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._3DGH9JKhQuVb8x4atLF-2p:after {\n  clear: both;\n}\n._2VLsatrBBnzlMfFqYuX0Fg {\n  margin-top: 4px;\n  -ms-flex: 1;\n  flex: 1;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n.HUoh93B4zZlE9jP8xMnov ._2VLsatrBBnzlMfFqYuX0Fg {\n  width: 100%;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg {\n  *zoom: 1;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg:after,\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg:after {\n  clear: both;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg > * {\n  float: left;\n}\n._2VLsatrBBnzlMfFqYuX0Fg .uBvzUzyA3T_e2xctf6CfA {\n  -ms-flex: 1;\n  flex: 1;\n  -ms-flex-order: 1;\n  order: 1;\n  background-color: #f7f8fa;\n}\n.HUoh93B4zZlE9jP8xMnov ._2VLsatrBBnzlMfFqYuX0Fg .uBvzUzyA3T_e2xctf6CfA {\n  width: 20%;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 {\n  -ms-flex: 4;\n  flex: 4;\n  -ms-flex-order: 2;\n  order: 2;\n}\n.HUoh93B4zZlE9jP8xMnov ._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 {\n  width: 80%;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 > p {\n  margin: 50px;\n  font-size: 1.5em;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl {\n  height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl {\n  *zoom: 1;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl:after,\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl:after {\n  clear: both;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl > * {\n  float: left;\n}\n", ""]);
+	exports.push([module.id, "/*\n    MIXINS\n*/\n._3DGH9JKhQuVb8x4atLF-2p {\n  *zoom: 1;\n}\n._3DGH9JKhQuVb8x4atLF-2p:after,\n._3DGH9JKhQuVb8x4atLF-2p:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._3DGH9JKhQuVb8x4atLF-2p:after {\n  clear: both;\n}\n._2VLsatrBBnzlMfFqYuX0Fg {\n  margin-top: 4px;\n  -ms-flex: 1;\n  flex: 1;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n.HUoh93B4zZlE9jP8xMnov ._2VLsatrBBnzlMfFqYuX0Fg {\n  width: 100%;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg {\n  *zoom: 1;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg:after,\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg:after {\n  clear: both;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg > * {\n  float: left;\n}\n._2VLsatrBBnzlMfFqYuX0Fg .uBvzUzyA3T_e2xctf6CfA {\n  -ms-flex: 1;\n  flex: 1;\n  -ms-flex-order: 1;\n  order: 1;\n  background-color: #f7f8fa;\n}\n.HUoh93B4zZlE9jP8xMnov ._2VLsatrBBnzlMfFqYuX0Fg .uBvzUzyA3T_e2xctf6CfA {\n  width: 20%;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 {\n  -ms-flex: 4;\n  flex: 4;\n  -ms-flex-order: 2;\n  order: 2;\n}\n.HUoh93B4zZlE9jP8xMnov ._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 {\n  width: 80%;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ {\n  margin: 30px;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ ._3PS6dK0B390kIIPXMQstxR {\n  width: 100%;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ ._3PS6dK0B390kIIPXMQstxR:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ ._3PS6dK0B390kIIPXMQstxR ._1Cfew7hcXiDxV0ZMTiPW39 {\n  float: left;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ ._3PS6dK0B390kIIPXMQstxR .NimdLogdvhLCkAy3z0T7I {\n  color: #aaaaaa;\n  float: right;\n  letter-spacing: 2px;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ ._3PS6dK0B390kIIPXMQstxR > * {\n  font-family: \"Helvetica Neue\", san-serif;\n  font-size: 1.6em;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ .TcyA-bd8ADIISK9983Af9 {\n  margin-top: 30px;\n  width: 100%;\n  height: 40px;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ .TcyA-bd8ADIISK9983Af9 > img {\n  float: left;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ .TcyA-bd8ADIISK9983Af9 ._1Gi0ui8cjdSgAAPYX_jdOr {\n  font-family: \"Helvetica Neue\", san-serif;\n  font-size: 1.2em;\n  color: #aaaaaa;\n  letter-spacing: 1px;\n  margin-left: 25px;\n  line-height: 40px;\n  float: left;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._3B_nQNvG-idvM-XdE8LeU8 ._21xRCNaAaeGonr4ETp5lmQ .ktFoBGAFJd9bAHp9q01BL * {\n  list-style: none;\n}\n._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl {\n  z-index: 10;\n  transition: margin-top 0.4s ease-in;\n  height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: horizontal;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl {\n  *zoom: 1;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl:after,\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl:after {\n  clear: both;\n}\n._3GBrHOHFCMGFK0KiILoR5N ._2VLsatrBBnzlMfFqYuX0Fg ._2K60a0Mrzuq_N5kQx9Mzkl > * {\n  float: left;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
@@ -22256,6 +22364,13 @@ webpackJsonp([0],[
 		"no-flexboxlegacy": "_3GBrHOHFCMGFK0KiILoR5N",
 		"templeft": "uBvzUzyA3T_e2xctf6CfA",
 		"tempright": "_3B_nQNvG-idvM-XdE8LeU8",
+		"videoInfo": "_21xRCNaAaeGonr4ETp5lmQ",
+		"head": "_3PS6dK0B390kIIPXMQstxR",
+		"title": "_1Cfew7hcXiDxV0ZMTiPW39",
+		"videocount": "NimdLogdvhLCkAy3z0T7I",
+		"videouserinfo": "TcyA-bd8ADIISK9983Af9",
+		"username": "_1Gi0ui8cjdSgAAPYX_jdOr",
+		"videoshare": "ktFoBGAFJd9bAHp9q01BL",
 		"playerField": "_2K60a0Mrzuq_N5kQx9Mzkl"
 	};
 
@@ -22334,7 +22449,7 @@ webpackJsonp([0],[
 	
 	
 	// module
-	exports.push([module.id, "/*\n    MIXINS\n*/\n.x_Pa9TtZvqBljFDuuNYex {\n  *zoom: 1;\n}\n.x_Pa9TtZvqBljFDuuNYex:after,\n.x_Pa9TtZvqBljFDuuNYex:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.x_Pa9TtZvqBljFDuuNYex:after {\n  clear: both;\n}\n._37cHMh1RC1nGmwoAgdy92w {\n  height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: vertical;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w {\n  *zoom: 1;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:after,\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:after {\n  clear: both;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w > * {\n  float: left;\n}\n._37cHMh1RC1nGmwoAgdy92w ._2u-iuw63__lVCieZHsKyTX {\n  -ms-flex: 0;\n  flex: 0;\n}\n._2eXWVnZxQcir6kUAX2olrc ._37cHMh1RC1nGmwoAgdy92w ._2u-iuw63__lVCieZHsKyTX {\n  width: NaN%;\n}\n", ""]);
+	exports.push([module.id, "/*\n    MIXINS\n*/\n.x_Pa9TtZvqBljFDuuNYex {\n  *zoom: 1;\n}\n.x_Pa9TtZvqBljFDuuNYex:after,\n.x_Pa9TtZvqBljFDuuNYex:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.x_Pa9TtZvqBljFDuuNYex:after {\n  clear: both;\n}\n._37cHMh1RC1nGmwoAgdy92w {\n  overflow: hidden;\n  height: 100%;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-box-orient: vertical;\n  -ms-flex-direction: column;\n  flex-direction: column;\n  -ms-box-pack: start;\n  -ms-flex-pack: start;\n      justify-content: flex-start;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w {\n  *zoom: 1;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:after,\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:before {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w:after {\n  clear: both;\n}\n._2Mpg8IIw6Cauj6c7FXN6_- ._37cHMh1RC1nGmwoAgdy92w > * {\n  float: left;\n}\n._37cHMh1RC1nGmwoAgdy92w ._2u-iuw63__lVCieZHsKyTX {\n  z-index: 9999;\n  -ms-flex: 0;\n  flex: 0;\n}\n._2eXWVnZxQcir6kUAX2olrc ._37cHMh1RC1nGmwoAgdy92w ._2u-iuw63__lVCieZHsKyTX {\n  width: NaN%;\n}\n", ""]);
 	
 	// exports
 	exports.locals = {
