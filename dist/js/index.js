@@ -2444,13 +2444,13 @@ webpackJsonp([0],[
 	
 	var _Head2 = _interopRequireDefault(_Head);
 	
-	var _VideoPage = __webpack_require__(234);
+	var _VideoPage = __webpack_require__(235);
 	
 	var _VideoPage2 = _interopRequireDefault(_VideoPage);
 	
-	__webpack_require__(270);
+	__webpack_require__(271);
 	
-	var _app = __webpack_require__(272);
+	var _app = __webpack_require__(273);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
@@ -2531,11 +2531,11 @@ webpackJsonp([0],[
 	
 	var _assets2 = _interopRequireDefault(_assets);
 	
-	var _gooeyMenu = __webpack_require__(229);
+	var _gooeyMenu = __webpack_require__(230);
 	
 	var _gooeyMenu2 = _interopRequireDefault(_gooeyMenu);
 	
-	var _util = __webpack_require__(230);
+	var _util = __webpack_require__(231);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -2577,8 +2577,7 @@ webpackJsonp([0],[
 	    }, {
 	        key: 'handleGooeyMenuClick',
 	        value: function handleGooeyMenuClick() {
-	            this.refs.GooeyMenu.handleClick();
-	            console.log(this.refs.GooeyMenu);
+	            this.refs.GooeyMenu.handleGooeyMenuClick();
 	        }
 	    }, {
 	        key: 'render',
@@ -2591,7 +2590,7 @@ webpackJsonp([0],[
 	                    { className: _index2.default.left },
 	                    _react2.default.createElement('img', {
 	                        className: _index2.default.logoImg,
-	                        src: __webpack_require__(233) })
+	                        src: __webpack_require__(234) })
 	                ),
 	                _react2.default.createElement(
 	                    'div',
@@ -3014,7 +3013,8 @@ webpackJsonp([0],[
 	    play_button: __webpack_require__(225),
 	    pause_button: __webpack_require__(226),
 	    multiple_users_silhouette: __webpack_require__(227),
-	    chat_button: __webpack_require__(228)
+	    chat_button: __webpack_require__(228),
+	    settting_button: __webpack_require__(229)
 	};
 	
 	exports.default = assets;
@@ -3057,6 +3057,12 @@ webpackJsonp([0],[
 
 /***/ },
 /* 229 */
+/***/ function(module, exports) {
+
+	module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU0IDU0IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1NCA1NDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIGQ9Ik01MS4yMiwyMWgtNS4wNTJjLTAuODEyLDAtMS40ODEtMC40NDctMS43OTItMS4xOTdzLTAuMTUzLTEuNTQsMC40Mi0yLjExNGwzLjU3Mi0zLjU3MSAgYzAuNTI1LTAuNTI1LDAuODE0LTEuMjI0LDAuODE0LTEuOTY2YzAtMC43NDMtMC4yODktMS40NDEtMC44MTQtMS45NjdsLTQuNTUzLTQuNTUzYy0xLjA1LTEuMDUtMi44ODEtMS4wNTItMy45MzMsMGwtMy41NzEsMy41NzEgIGMtMC40NzUsMC40NzUtMC45OTcsMC41NzQtMS4zNTIsMC41NzRjLTAuNSwwLTAuOTk3LTAuMTk2LTEuMzY0LTAuNTM5QzMzLjMyNCw4Ljk4NCwzMyw4LjUzNCwzMyw3LjgzMlYyLjc4ICBDMzMsMS4yNDcsMzEuNzUzLDAsMzAuMjIsMEgyMy43OEMyMi4yNDcsMCwyMSwxLjI0NywyMSwyLjc4djUuMDUyYzAsMS4yMTgtMC45OTcsMS45NDUtMS45NjEsMS45NDVjLTAuMzU0LDAtMC44NzYtMC4xLTEuMzUxLTAuNTc0ICBsLTMuNTcxLTMuNTcxYy0xLjA1Mi0xLjA1Mi0yLjg4My0xLjA1LTMuOTMzLDBsLTQuNTUzLDQuNTUzYy0wLjUyNSwwLjUyNS0wLjgxNCwxLjIyNC0wLjgxNCwxLjk2N2MwLDAuNzQyLDAuMjg5LDEuNDQsMC44MTQsMS45NjYgIGwzLjU3MiwzLjU3MWMwLjU3MywwLjU3NCwwLjczLDEuMzY0LDAuNDIsMi4xMTRTOC42NDQsMjEsNy44MzIsMjFIMi43OEMxLjI0NywyMSwwLDIyLjI0NywwLDIzLjc4djYuNDM4QzAsMzEuNzUyLDEuMjQ3LDMzLDIuNzgsMzMgIGg1LjA1MmMwLjgxMiwwLDEuNDgxLDAuNDQ3LDEuNzkyLDEuMTk3czAuMTUzLDEuNTQtMC40MiwyLjExNGwtMy41NzIsMy41NzFjLTAuNTI1LDAuNTI1LTAuODE0LDEuMjI0LTAuODE0LDEuOTY2ICBjMCwwLjc0MywwLjI4OSwxLjQ0MSwwLjgxNCwxLjk2N2w0LjU1Myw0LjU1M2MxLjA1MSwxLjA1MSwyLjg4MSwxLjA1MywzLjkzMywwbDMuNTcxLTMuNTcxYzAuNDc1LTAuNDc1LDAuOTk3LTAuNTc0LDEuMzUyLTAuNTc0ICBjMC45NjMsMCwxLjk2LDAuNzI4LDEuOTYsMS45NDV2NS4wNTFDMjEsNTIuNzUyLDIyLjI0Nyw1NCwyMy43OCw1NGg2LjQzOWMxLjUzMywwLDIuNzgtMS4yNDgsMi43OC0yLjc4MXYtNS4wNTEgIGMwLTEuMjE4LDAuOTk3LTEuOTQ1LDEuOTYtMS45NDVjMC4zNTQsMCwwLjg3NywwLjEsMS4zNTIsMC41NzRsMy41NzEsMy41NzFjMS4wNTIsMS4wNTIsMi44ODMsMS4wNSwzLjkzMywwbDQuNTUzLTQuNTUzICBjMC41MjUtMC41MjUsMC44MTQtMS4yMjQsMC44MTQtMS45NjdjMC0wLjc0Mi0wLjI4OS0xLjQ0LTAuODE0LTEuOTY2bC0zLjU3Mi0zLjU3MWMtMC41NzMtMC41NzQtMC43My0xLjM2NC0wLjQyLTIuMTE0ICBTNDUuMzU2LDMzLDQ2LjE2OCwzM2g1LjA1MmMxLjUzMywwLDIuNzgtMS4yNDgsMi43OC0yLjc4MVYyMy43OEM1NCwyMi4yNDcsNTIuNzUzLDIxLDUxLjIyLDIxeiBNMzQsMjdjMCwzLjg1OS0zLjE0MSw3LTcsNyAgcy03LTMuMTQxLTctN3MzLjE0MS03LDctN1MzNCwyMy4xNDEsMzQsMjd6IiBmaWxsPSIjRkZGRkZGIi8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="
+
+/***/ },
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3075,9 +3081,9 @@ webpackJsonp([0],[
 	
 	var _assets2 = _interopRequireDefault(_assets);
 	
-	var _util = __webpack_require__(230);
+	var _util = __webpack_require__(231);
 	
-	var _gooeyMenu = __webpack_require__(231);
+	var _gooeyMenu = __webpack_require__(232);
 	
 	var _gooeyMenu2 = _interopRequireDefault(_gooeyMenu);
 	
@@ -3110,7 +3116,10 @@ webpackJsonp([0],[
 	        value: function setRefFromProps() {}
 	    }, {
 	        key: 'handleClick',
-	        value: function handleClick() {
+	        value: function handleClick() {}
+	    }, {
+	        key: 'handleGooeyMenuClick',
+	        value: function handleGooeyMenuClick() {
 	            if (!this.state.isbuttonclick) {
 	                this.setState({
 	                    margin: 50,
@@ -3182,7 +3191,7 @@ webpackJsonp([0],[
 	GooeyMenu.defaultProps = {
 	    buttonNum: 3,
 	    buttonSvg: _assets2.default.searchSvg,
-	    buttonSvg_1: _assets2.default.pause_button,
+	    buttonSvg_1: _assets2.default.settting_button,
 	    buttonSvg_2: _assets2.default.multiple_users_silhouette,
 	    buttonSvg_3: _assets2.default.chat_button,
 	    buttonColor_1: '#329ee4',
@@ -3193,7 +3202,7 @@ webpackJsonp([0],[
 	exports.default = GooeyMenu;
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -3215,13 +3224,13 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(232);
+	var content = __webpack_require__(233);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -3241,7 +3250,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -3260,13 +3269,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "../assets/images/9bdd5c3a.logo.png";
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3281,17 +3290,17 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _VideoPlayer = __webpack_require__(235);
+	var _VideoPlayer = __webpack_require__(236);
 	
 	var _VideoPlayer2 = _interopRequireDefault(_VideoPlayer);
 	
-	var _util = __webpack_require__(230);
+	var _util = __webpack_require__(231);
 	
-	var _classnames = __webpack_require__(240);
+	var _classnames = __webpack_require__(241);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _videoPage = __webpack_require__(268);
+	var _videoPage = __webpack_require__(269);
 	
 	var _videoPage2 = _interopRequireDefault(_videoPage);
 	
@@ -3445,7 +3454,7 @@ webpackJsonp([0],[
 	exports.default = VideoPage;
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3460,11 +3469,11 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _index = __webpack_require__(236);
+	var _index = __webpack_require__(237);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _Video = __webpack_require__(238);
+	var _Video = __webpack_require__(239);
 	
 	var _Video2 = _interopRequireDefault(_Video);
 	
@@ -3500,13 +3509,13 @@ webpackJsonp([0],[
 	exports.default = VideoPlayer;
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(237);
+	var content = __webpack_require__(238);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -3526,7 +3535,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -3544,7 +3553,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3560,19 +3569,19 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Controls = __webpack_require__(239);
+	var _Controls = __webpack_require__(240);
 	
 	var _Controls2 = _interopRequireDefault(_Controls);
 	
-	var _lodash = __webpack_require__(253);
+	var _lodash = __webpack_require__(254);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _Overlay = __webpack_require__(263);
+	var _Overlay = __webpack_require__(264);
 	
 	var _Overlay2 = _interopRequireDefault(_Overlay);
 	
-	var _index = __webpack_require__(266);
+	var _index = __webpack_require__(267);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -4030,7 +4039,7 @@ webpackJsonp([0],[
 	exports.Overlay = _Overlay2.default;
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4045,23 +4054,23 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(240);
+	var _classnames = __webpack_require__(241);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _VideoPlayButton = __webpack_require__(241);
+	var _VideoPlayButton = __webpack_require__(242);
 	
 	var _VideoPlayButton2 = _interopRequireDefault(_VideoPlayButton);
 	
-	var _ProgressBar = __webpack_require__(244);
+	var _ProgressBar = __webpack_require__(245);
 	
 	var _ProgressBar2 = _interopRequireDefault(_ProgressBar);
 	
-	var _InputRange = __webpack_require__(245);
+	var _InputRange = __webpack_require__(246);
 	
 	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
-	var _index = __webpack_require__(261);
+	var _index = __webpack_require__(262);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -4137,7 +4146,7 @@ webpackJsonp([0],[
 	exports.default = Controls;
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -4191,7 +4200,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4210,7 +4219,7 @@ webpackJsonp([0],[
 	
 	var _assets2 = _interopRequireDefault(_assets);
 	
-	var _play_button = __webpack_require__(242);
+	var _play_button = __webpack_require__(243);
 	
 	var _play_button2 = _interopRequireDefault(_play_button);
 	
@@ -4268,13 +4277,13 @@ webpackJsonp([0],[
 	exports.default = VideoPlayButton;
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(243);
+	var content = __webpack_require__(244);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -4294,7 +4303,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -4312,7 +4321,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4327,15 +4336,15 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _InputRange = __webpack_require__(245);
+	var _InputRange = __webpack_require__(246);
 	
 	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
-	var _progressbar = __webpack_require__(259);
+	var _progressbar = __webpack_require__(260);
 	
 	var _progressbar2 = _interopRequireDefault(_progressbar);
 	
-	var _util = __webpack_require__(230);
+	var _util = __webpack_require__(231);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -4421,7 +4430,7 @@ webpackJsonp([0],[
 	exports.default = ProgressBar;
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4432,7 +4441,7 @@ webpackJsonp([0],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _classnames = __webpack_require__(240);
+	var _classnames = __webpack_require__(241);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -4440,21 +4449,21 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Slider = __webpack_require__(246);
+	var _Slider = __webpack_require__(247);
 	
 	var _Slider2 = _interopRequireDefault(_Slider);
 	
-	var _valueTransformer = __webpack_require__(252);
+	var _valueTransformer = __webpack_require__(253);
 	
 	var _valueTransformer2 = _interopRequireDefault(_valueTransformer);
 	
-	var _Track = __webpack_require__(254);
+	var _Track = __webpack_require__(255);
 	
 	var _Track2 = _interopRequireDefault(_Track);
 	
-	var _util = __webpack_require__(230);
+	var _util = __webpack_require__(231);
 	
-	var _InputRange = __webpack_require__(257);
+	var _InputRange = __webpack_require__(258);
 	
 	var _InputRange2 = _interopRequireDefault(_InputRange);
 	
@@ -4627,7 +4636,7 @@ webpackJsonp([0],[
 	exports.default = InputRange;
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4644,13 +4653,13 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _util = __webpack_require__(230);
+	var _util = __webpack_require__(231);
 	
-	var _Label = __webpack_require__(247);
+	var _Label = __webpack_require__(248);
 	
 	var _Label2 = _interopRequireDefault(_Label);
 	
-	var _Slider = __webpack_require__(250);
+	var _Slider = __webpack_require__(251);
 	
 	var _Slider2 = _interopRequireDefault(_Slider);
 	
@@ -4769,7 +4778,7 @@ webpackJsonp([0],[
 	exports.default = Slider;
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4786,7 +4795,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Label = __webpack_require__(248);
+	var _Label = __webpack_require__(249);
 	
 	var _Label2 = _interopRequireDefault(_Label);
 	
@@ -4826,13 +4835,13 @@ webpackJsonp([0],[
 	exports.default = Label;
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(249);
+	var content = __webpack_require__(250);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -4852,7 +4861,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -4868,13 +4877,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(251);
+	var content = __webpack_require__(252);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -4894,7 +4903,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -4911,7 +4920,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4920,7 +4929,7 @@ webpackJsonp([0],[
 	    value: true
 	});
 	
-	var _lodash = __webpack_require__(253);
+	var _lodash = __webpack_require__(254);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
@@ -5000,7 +5009,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -22091,7 +22100,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(192)(module)))
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22108,9 +22117,9 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _util = __webpack_require__(230);
+	var _util = __webpack_require__(231);
 	
-	var _Track = __webpack_require__(255);
+	var _Track = __webpack_require__(256);
 	
 	var _Track2 = _interopRequireDefault(_Track);
 	
@@ -22203,13 +22212,13 @@ webpackJsonp([0],[
 	exports.default = Track;
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(256);
+	var content = __webpack_require__(257);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22229,7 +22238,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22250,13 +22259,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(258);
+	var content = __webpack_require__(259);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22276,7 +22285,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22292,13 +22301,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(260);
+	var content = __webpack_require__(261);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22318,7 +22327,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22334,13 +22343,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(262);
+	var content = __webpack_require__(263);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22360,7 +22369,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22380,7 +22389,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22395,7 +22404,7 @@ webpackJsonp([0],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _overlay = __webpack_require__(264);
+	var _overlay = __webpack_require__(265);
 	
 	var _overlay2 = _interopRequireDefault(_overlay);
 	
@@ -22442,13 +22451,13 @@ webpackJsonp([0],[
 	exports.default = Overlay;
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(265);
+	var content = __webpack_require__(266);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22468,7 +22477,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22487,13 +22496,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(267);
+	var content = __webpack_require__(268);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22513,7 +22522,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22532,13 +22541,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(269);
+	var content = __webpack_require__(270);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22558,7 +22567,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22587,13 +22596,13 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(271);
+	var content = __webpack_require__(272);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22613,7 +22622,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();
@@ -22627,13 +22636,13 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(273);
+	var content = __webpack_require__(274);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -22653,7 +22662,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(220)();

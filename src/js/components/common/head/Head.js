@@ -24,8 +24,7 @@ class CommonHead extends React.Component {
 
     }
     handleGooeyMenuClick() {
-        this.refs.GooeyMenu.handleClick();
-        console.log(this.refs.GooeyMenu);
+        this.refs.GooeyMenu.handleGooeyMenuClick();
     }
     render() {
         return(
@@ -55,7 +54,6 @@ class CommonHead extends React.Component {
 			        </form>
                     <div className={styles.fillField}></div>
                 </div>
-
                 <div className={styles.right}>
                     <GooeyMenu ref='GooeyMenu'/>
                     <img

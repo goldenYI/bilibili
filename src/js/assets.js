@@ -5,6 +5,7 @@ var assets = {
     pause_button: require('assets/common/pause_button.svg'),
     multiple_users_silhouette: require('assets/common/multiple-users-silhouette.svg'),
     chat_button: require('assets/common/chat.svg'),
+    settting_button: require('assets/common/settings.svg'),
 }
 
 

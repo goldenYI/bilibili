@@ -18,6 +18,10 @@ class GooeyMenu extends React.Component {
 
     }
     handleClick() {
+
+
+    }
+    handleGooeyMenuClick() {
         if(!this.state.isbuttonclick) {
             this.setState({
                 margin: 50,
@@ -30,7 +34,6 @@ class GooeyMenu extends React.Component {
                 isbuttonclick: false
             });
         }
-
     }
     renderButton() {
         let content = Array(this.props.buttonNum);
@@ -77,7 +80,7 @@ class GooeyMenu extends React.Component {
 GooeyMenu.defaultProps = {
     buttonNum: 3,
     buttonSvg: assets.searchSvg,
-    buttonSvg_1: assets.pause_button,
+    buttonSvg_1: assets.settting_button,
     buttonSvg_2: assets.multiple_users_silhouette,
     buttonSvg_3: assets.chat_button,
     buttonColor_1: '#329ee4',
