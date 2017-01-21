@@ -1,0 +1,27 @@
+@import "style/common/flexbox";
+.menu {
+    -webkit-filter: url("#goo");
+    filter: url("#goo");
+    width: 37px;
+    height: 37px;
+    position: fixed;
+    z-index: 10;
+    .selectButton {
+        right: 0px;
+        width: 37px;
+        height: 37px;
+        position: absolute;
+        border-radius: 50%;
+        margin-right: 100px;
+        float: right;
+        background-color: #329ee4; 
+        transition: margin 1.2s ease-out;
+        .flexbox();
+        align-items: center;
+        justify-content: center;
+        > img {
+            height: 15px;
+        }
+
+    }
+}

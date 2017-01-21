@@ -269,6 +269,12 @@
   background: white;
 }
 .container .right .userImg {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  max-height: 70%;
+  z-index: 20;
+}
+.container .right .userImg > img {
+  width: 40px;
+  height: 40px;
 }

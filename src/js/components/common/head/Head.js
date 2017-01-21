@@ -2,14 +2,18 @@
 
 import React from 'react';
 import styles from 'style/common/head/index.css';
-import assets from 'assets.js'
-
+import assets from 'assets';
+import GooeyMenu from 'components/common/gooeyMenu/gooeyMenu';
+import {autobind} from 'components/common/util.js';
 
 class CommonHead extends React.Component {
     constructor(props) {
         super(props);
         // 定义 state
         this.state = {};
+        autobind([
+            'handleGooeyMenuClick'
+        ],this);
     }
 
     // 生命周期方法
@@ -17,7 +21,11 @@ class CommonHead extends React.Component {
     componentDidMount() {}
     componentWillUnmount() {}
     onClickSubmit() {
-    
+
+    }
+    handleGooeyMenuClick() {
+        this.refs.GooeyMenu.handleClick();
+        console.log(this.refs.GooeyMenu);
     }
     render() {
         return(
@@ -47,8 +55,12 @@ class CommonHead extends React.Component {
 			        </form>
                     <div className={styles.fillField}></div>
                 </div>
+
                 <div className={styles.right}>
-                    <img className={styles.userImg} src={assets.logo} />
+                    <GooeyMenu ref='GooeyMenu'/>
+                    <img
+                        onClick={this.handleGooeyMenuClick}
+                        className={styles.userImg} src={assets.logo} />
                 </div>
             </div>
         );

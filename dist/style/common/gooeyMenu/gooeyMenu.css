@@ -1,0 +1,64 @@
+/*
+    MIXINS
+*/
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after,
+.clearfix:before {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.menu {
+  -webkit-filter: url("#goo");
+  filter: url("#goo");
+  width: 37px;
+  height: 37px;
+  position: fixed;
+  z-index: 10;
+}
+.menu .selectButton {
+  right: 0px;
+  width: 37px;
+  height: 37px;
+  position: absolute;
+  border-radius: 50%;
+  margin-right: 100px;
+  float: right;
+  background-color: #329ee4;
+  transition: margin 1.2s ease-out;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-box-pack: start;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+.no-flexboxlegacy .menu .selectButton {
+  *zoom: 1;
+}
+.no-flexboxlegacy .menu .selectButton:after,
+.no-flexboxlegacy .menu .selectButton:before {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.no-flexboxlegacy .menu .selectButton:after {
+  clear: both;
+}
+.no-flexboxlegacy .menu .selectButton > * {
+  float: left;
+}
+.menu .selectButton > img {
+  height: 15px;
+}
